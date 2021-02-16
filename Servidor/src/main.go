@@ -6,10 +6,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"./Listas"
+	"strconv"
+
 	"github.com/gorilla/mux"
 )
-
 
 func start(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Welcome to my APP to Virtual Mall")
@@ -17,38 +17,71 @@ func start(w http.ResponseWriter, r *http.Request) {
 
 }
 
-type Message struct{
-	Name string 'json:Nombre'
-	Age int 'json:Edad'
+type Message struct {
+	Name string `json:Name`
+	Age  int    `json:Age`
 }
 
-func Add1(w http.ResponseWriter, r *http.Request){
-	var ms Listas.Node
-	reqBody,err:= ioutil.ReadAll(r.Body)
-	if err != nil{
-		fmt.Fprintf(w,"Error al Insertar")
+type Tienda struct {
+	Nombre       string `json:Nombre`
+	Descripcion  string `json:Descripcion`
+	contacto     string `json:Contacto`
+	Calificacion int    `json:Calificacion`
+}
+
+type Departamento struct {
+	Nombre  string     `json:Nombre`
+	Tiendas [10]Tienda `json:Tiendas`
+}
+
+type Datos struct {
+	Indice        string           `json:Indice`
+	Departamentos [10]Departamento `json:Departamentos`
+}
+
+type Dato struct {
+	Datos [5]Datos `json:Datos`
+}
+
+func Add(w http.ResponseWriter, r *http.Request) {
+	var ms Message
+	var ms1 Datos
+	var ms2 Departamento
+	var ms3 Tienda
+	var ms4 Dato
+	reqBody, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Fprintf(w, "Error al Insertar")
 
 	}
-	json.Unmarshal(reqBody,&ms)
-	fmt.Fprintln(w, ms.To_string())
+	w.Header().Set("Content-Type", "application/json")
+	json.Unmarshal(reqBody, &ms)
+	json.Unmarshal(reqBody, &ms4)
+	json.Unmarshal(reqBody, &ms1)
+	json.Unmarshal(reqBody, &ms2)
+	json.Unmarshal(reqBody, &ms3)
+	json.NewEncoder(w).Encode(ms)
+	json.NewEncoder(w).Encode(ms4)
+	json.NewEncoder(w).Encode(ms1)
+	json.NewEncoder(w).Encode(ms2)
+	json.NewEncoder(w).Encode(ms3)
+}
+
+func number(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	b, _ := strconv.Atoi(vars["id"])
+	a := Message{"El numero que me mandaste es ", b}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusFound)
+	json.NewEncoder(w).Encode(a)
 }
 
 func main() {
-	lists := Listas.NewList()
-	a := Listas.Node{"Milton", 21, nil, nil}
-	b := Listas.Node{"Josue", 19, nil, nil}
-	c := Listas.Node{"Rodriguez", 20, nil, nil}
-	d := Listas.Node{"Valdez", 22, nil, nil}
-	lists.Add(&a)
-	lists.Add(&b)
-	lists.Add(&c)
-	lists.Add(&d)
-	lists.Print()
-
 	router := mux.NewRouter()
 	router.HandleFunc("/", start).Methods("GET")
-	router.HandleFunc("/agregar",Add1).Methods("POST")
-	log.Fatal(http.ListenAndServe(":3000", router))
+	router.HandleFunc("/cargartiendas", Add).Methods("POST")
+	router.HandleFunc("/numero/{id}", number).Methods("GET")
 
+	log.Fatal(http.ListenAndServe(":3000", router))
 
 }
