@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"./Listas"
 	"github.com/gorilla/mux"
 )
 
@@ -77,6 +78,15 @@ func number(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	lists := Listas.NewList()
+	lists_tienda := Listas.NewLista_Tienda()
+	a := Listas.Node{"Milton", 21, nil, nil}
+	b := Listas.Node_Tienda{"Eskala", "Centro Comercial", "45875432", 3, nil, nil}
+	lists.Add(&a)
+	lists_tienda.Add_Tienda(&b)
+	lists.Print()
+	lists.Print_Dep()
+
 	router := mux.NewRouter()
 	router.HandleFunc("/", start).Methods("GET")
 	router.HandleFunc("/cargartiendas", Add).Methods("POST")
