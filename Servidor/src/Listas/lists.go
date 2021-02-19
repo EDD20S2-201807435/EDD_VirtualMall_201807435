@@ -16,23 +16,24 @@ type Node_Tienda struct {
 	Nombre       string
 	Descripcion  string
 	Contacto     string
+	Departamento string
+	Letra        string
 	Calificacion int
 	Next         *Node_Tienda
 	Last         *Node_Tienda
 }
 
 type Node_Departamento struct {
-	Nombre  string
-	Tiendas *Node_Tienda
+	Nombre string
+	Indice string
+	Next   *Node_Departamento
+	Last   *Node_Departamento
 }
 
 type Node_Datos struct {
-	Indice        string
-	Departamentos [10]Node_Departamento
-}
-
-type Node_Dato struct {
-	Datos [5]Node_Datos
+	Indice string
+	Next   *Node_Datos
+	Last   *Node_Datos
 }
 
 type List struct {
@@ -43,19 +44,30 @@ type List_Tienda struct {
 	frist, last *Node_Tienda
 }
 
-type Vector_Departamnetos struct {
-	
+type Calificacion struct {
+	Puntos      int
+	Listatienda *List_Tienda
 }
 
-type Vector_Datos struct {
-	vector_dato [5]Node_Datos
+var Matriz [5][30]Calificacion
+
+type List_Departamentos struct {
+	frist, last *Node_Departamento
 }
-func NewList_vector() *ListVector{
-	return vector_dep [100][4]Node_Departamento
+
+type List_Datos struct {
+	frist, last *Node_Datos
 }
+
+func NewList_vector() *List_Tienda {
+	return &List_Tienda{nil, nil}
+}
+
+//eliminar
 func NewList() *List {
 	return &List{nil, nil}
 }
+
 func NewLista_Tienda() *List_Tienda {
 	return &List_Tienda{nil, nil}
 }
@@ -72,21 +84,43 @@ func (this *List_Tienda) Add_Tienda(new *Node_Tienda) Node_Tienda {
 	return *this.frist
 }
 
-var fila = 1
+func (this *List_Departamentos) Add_Departamento(new *Node_Departamento) Node_Departamento {
+	if this.frist == nil {
+		this.frist = new
+		this.last = new
+	} else {
+		this.last.Next = new
+		new.Last = this.last
+		this.last = new
+	}
+	return *this.frist
+}
 
-func (this Vector_Departamnetos) Add_Departementos(new Node_Departamento) {
-	for i := 0; i < 10; i++ {
-		if this.vector_dep[fila][i].Nombre == "" {
-			this.vector_dep[fila][i] = new
+func (this *List_Datos) Add_Departamento(new *Node_Datos) Node_Datos {
+	if this.frist == nil {
+		this.frist = new
+		this.last = new
+	} else {
+		this.last.Next = new
+		new.Last = this.last
+		this.last = new
+	}
+	return *this.frist
+}
+
+func Add_Calificacion(new Calificacion, No_Indice int) Calificacion {
+	for i := 0; i < 30; i++ {
+		if Matriz[No_Indice][i].Puntos == 0 {
+			Matriz[No_Indice][i] = new
+			return new
 		}
 	}
-
+	return new
 }
 
-func (this *Vector_Datos) Add_Datos(nodo Vector_Departamnetos) {
+var fila = 1
 
-}
-
+//eliminar
 func (this *List) Add(new *Node) {
 	if this.frist == nil {
 		this.frist = new
@@ -111,27 +145,41 @@ func (this *List) To_string() string {
 	return char
 }
 
+func (this *Node_Tienda) To_string_Tienda() string {
+	return "Name: " + this.Nombre + "Edad: " + strconv.Itoa(this.Calificacion)
+}
+func (this *List_Tienda) To_string_Tienda() string {
+	var char string
+	aux := this.frist
+	for aux != nil {
+		char += aux.To_string_Tienda() + "\n"
+		aux = aux.Next
+	}
+	return char
+}
+
 func (this *List) Print() {
 	fmt.Println("Lista--------------")
 	fmt.Println(this.To_string())
 }
-func (this *Vector_Departamnetos) Print_Dep() {
+
+func (this *List_Tienda) Print_Tienda() {
 	fmt.Println("Lista--------------")
+	fmt.Println(this.To_string_Tienda())
+}
+func (this *List_Tienda) Return_Tienda() *List_Tienda {
+	return this
+}
 
-	for i := 0; i < 4; i++ {
-		for j := 0; j < 10; j++ {
-			fmt.Println(this.vector_dep[i][j].Nombre + " ")
-			if this.vector_dep[i][j].Tiendas != nil {
-				aux := this.vector_dep[i][j].Tiendas
-				for aux != nil {
-					fmt.Println("Nombre: " + aux.Nombre)
-					fmt.Println("Descripcion " + aux.Descripcion)
-					fmt.Println("Contacto " + aux.Contacto)
-					fmt.Println("Calificacion " + strconv.Itoa(aux.Calificacion))
-					aux = aux.Next
-				}
+func Print_Vector() {
+	fmt.Println("Lista--------------")
+	for i := 0; i < 25; i++ {
+		if Matriz[1][i].Puntos != 0 {
+			fmt.Println("Calificacion " + strconv.Itoa(Matriz[1][i].Puntos))
+			if Matriz[1][i].Listatienda != nil {
+				fmt.Println(Matriz[1][i].Listatienda.To_string_Tienda())
 			}
-
 		}
+
 	}
 }

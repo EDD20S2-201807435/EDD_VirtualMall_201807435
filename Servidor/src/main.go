@@ -31,41 +31,34 @@ type Tienda struct {
 }
 
 type Departamento struct {
-	Nombre  string     `json:Nombre`
-	Tiendas [10]Tienda `json:Tiendas`
+	Nombre string `json:Nombre`
 }
 
 type Datos struct {
-	Indice        string           `json:Indice`
-	Departamentos [10]Departamento `json:Departamentos`
+	Indice string `json:Indice`
 }
 
 type Dato struct {
-	Datos [5]Datos `json:Datos`
+	Datos string `json:Datos`
 }
 
 func Add(w http.ResponseWriter, r *http.Request) {
-	var ms Message
-	var ms1 Datos
-	var ms2 Departamento
-	var ms3 Tienda
-	var ms4 Dato
+	var ms Listas.Node
+
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		fmt.Fprintf(w, "Error al Insertar")
 
 	}
-	w.Header().Set("Content-Type", "application/json")
+	c := Dato{}
+	var ell = json.Unmarshal(reqBody, &c)
+	if ell != nil {
+		fmt.Fprintf(w, "Error al Insertar")
+	}
 	json.Unmarshal(reqBody, &ms)
-	json.Unmarshal(reqBody, &ms4)
-	json.Unmarshal(reqBody, &ms1)
-	json.Unmarshal(reqBody, &ms2)
-	json.Unmarshal(reqBody, &ms3)
-	json.NewEncoder(w).Encode(ms)
-	json.NewEncoder(w).Encode(ms4)
-	json.NewEncoder(w).Encode(ms1)
-	json.NewEncoder(w).Encode(ms2)
-	json.NewEncoder(w).Encode(ms3)
+	fmt.Fprintln(w, ms.To_string())
+	fmt.Fprintln(w, &c)
+
 }
 
 func number(w http.ResponseWriter, r *http.Request) {
@@ -79,13 +72,33 @@ func number(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	lists := Listas.NewList()
-	lists_tienda := Listas.NewLista_Tienda()
+	//lists_tienda := Listas.NewLista_Tienda()
+	//lists_tienda1 := Listas.NewLista_Tienda()
+	//b := Listas.Node_Tienda{"Eskala", "Centro Comercial", "45875432", "Deportes", "A", 3, nil, nil}
+	//c := Listas.Node_Tienda{"Eskala1", "Centro Comercial", "45875432", "Deportes", "A", 4, nil, nil}
+	//d := Listas.Node_Tienda{"Eskala2", "Centro Comercial", "45875432", "Deportes", "A", 1, nil, nil}
+	//e := Listas.Node_Tienda{"Eskala3", "Centro Comercial", "45875432", "Deportes", "A", 2, nil, nil}
+
 	a := Listas.Node{"Milton", 21, nil, nil}
-	b := Listas.Node_Tienda{"Eskala", "Centro Comercial", "45875432", 3, nil, nil}
+
 	lists.Add(&a)
-	lists_tienda.Add_Tienda(&b)
+	//lists_tienda.Add_Tienda(&b)
+	//lists_tienda.Add_Tienda(&d)
+	//lists_tienda1.Add_Tienda(&c)
+	//lists_tienda1.Add_Tienda(&e)
 	lists.Print()
-	lists.Print_Dep()
+	//lists_tienda.Print_Tienda()
+	//g := Listas.Calificacion{1, nil}
+	//h := Listas.Calificacion{2, lists_tienda.Return_Tienda()}
+	//i := Listas.Calificacion{3, nil}
+	//j := Listas.Calificacion{4, lists_tienda1.Return_Tienda()}
+	//k := Listas.Calificacion{5, nil}
+	//Listas.Add_Calificacion(g, 1)
+	//Listas.Add_Calificacion(h, 1)
+	//Listas.Add_Calificacion(i, 1)
+	//Listas.Add_Calificacion(j, 1)
+	//Listas.Add_Calificacion(k, 1)
+	//Listas.Print_Vector()
 
 	router := mux.NewRouter()
 	router.HandleFunc("/", start).Methods("GET")
@@ -93,5 +106,7 @@ func main() {
 	router.HandleFunc("/numero/{id}", number).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":3000", router))
+	var hola Tienda
+	fmt.Println(hola.Nombre)
 
 }
