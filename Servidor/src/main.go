@@ -122,19 +122,27 @@ func Tienda_Especifica(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Error al Insertar")
 
 	}
-	var Tienda TE
-	er := json.Unmarshal(reqBody, &Tienda)
+	var Tienda1 TE
+	er := json.Unmarshal(reqBody, &Tienda1)
 	if er != nil {
 		fmt.Fprintf(w, "Error al Insertar el segundo")
 	}
-	fmt.Println(Tienda.Nombre)
+	fmt.Println(Tienda1.Nombre)
 	var tiendass *Listas.Node_Tienda
-	tiendass = Listas.Tie_Esp(Tienda.Departamento, Tienda.Nombre, Tienda.Calificacion)
+	tiendass = Listas.Tie_Esp(Tienda1.Departamento, Tienda1.Nombre, Tienda1.Calificacion)
 	if tiendass != nil {
-		fmt.Fprintf(w, "Nombre: "+tiendass.Nombre)
-		fmt.Fprintf(w, "Descripcion: "+tiendass.Descripcion)
-		fmt.Fprintf(w, "Contacto: "+tiendass.Contacto)
-		fmt.Fprintf(w, "Calificacion: "+strconv.Itoa(tiendass.Calificacion))
+		var tt Tienda
+		tt.Nombre = tiendass.Nombre
+		tt.Descripcion = tiendass.Descripcion
+		tt.Contacto = tiendass.Contacto
+		tt.Calificacion = tiendass.Calificacion
+		fmt.Fprintln(w, "Nombre: "+tiendass.Nombre)
+		fmt.Fprintln(w, "Descripcion: "+tiendass.Descripcion)
+		fmt.Fprintln(w, "Contacto: "+tiendass.Contacto)
+		fmt.Fprintln(w, "Calificacion: "+strconv.Itoa(tiendass.Calificacion))
+		w.Header().Set("Content-Type", "application/json")
+		//json.Unmarshal(reqBody, tt)
+		//json.NewEncoder(w).Enconde(&tt)
 
 	}
 }
