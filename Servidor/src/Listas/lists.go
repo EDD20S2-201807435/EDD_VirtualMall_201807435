@@ -193,7 +193,7 @@ func Print_Vector() {
 	for i := 0; i < 5; i++ {
 		for j := 0; j < 30; j++ {
 			if Matriz[i][j].Puntos != 0 {
-				fmt.Println("Calificacion " + strconv.Itoa(Matriz[i][j].Puntos) + "Departamento: " + Matriz[i][j].Departamento)
+				fmt.Println("Calificacion " + strconv.Itoa(Matriz[i][j].Puntos) + "Departamento: " + Matriz[i][j].Departamento + " Indice: " + Matriz[i][j].Indice)
 				if Matriz[i][j].Listatienda != nil {
 					fmt.Println(Matriz[i][j].Listatienda.To_string_Tienda())
 				}
@@ -254,7 +254,10 @@ func Convertir_Matriz() {
 func Graficar() string {
 	var cadena strings.Builder
 	fmt.Fprintf(&cadena, "digraph G{\n")
-	fmt.Fprintf(&cadena, "node[shape=record];\n")
+	fmt.Fprintf(&cadena, "node[shape=box];\n")
+	fmt.Fprintf(&cadena, "rankdir=LR;\n")
+	fmt.Fprintf(&cadena, "graph[splines=polyline]\n")
+
 	graficar(0, &cadena, 0)
 	fmt.Fprintf(&cadena, "}")
 	guardarArchivo(cadena.String())
@@ -269,31 +272,39 @@ func Graficar() string {
 
 func graficar(count int, s *strings.Builder, actual int) {
 	if Vector[count].Puntos != 0 {
-		fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", &Vector[actual], Vector[actual].Puntos, Vector[actual].Departamento)
+		fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", &Vector[count], Vector[count].Puntos, Vector[count].Departamento)
 		if Vector[actual].Puntos != 0 {
 			fmt.Fprintf(s, "node%p->node%p;\n", &Vector[actual], &Vector[count])
 			fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], &Vector[actual])
 			//Print Listas
 			if Vector[count].Listatienda != nil {
-				fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", &Vector[count].Listatienda.frist, Vector[count].Listatienda.frist.Nombre, Vector[count].Listatienda.frist.Calificacion)
-				fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], &Vector[count].Listatienda.frist)
-				fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count].Listatienda.frist, &Vector[count])
-				graficar_Tiendas(Vector[count].Listatienda.frist.Next, s, Vector[count].Listatienda.frist)
+
+				var validar *Node_Tienda
+				validar = Vector[count].Listatienda.frist
+				fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", validar, validar.Nombre, validar.Calificacion)
+				fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], validar)
+				fmt.Fprintf(s, "node%p->node%p;\n", validar, &Vector[count])
+				fmt.Fprintf(s, "{rank:same;node%p;node%p}\n", validar, &Vector[count])
+
+				var validar1 *Node_Tienda
+				validar1 = validar
+				validar = validar.Next
+				if validar != nil {
+
+					for validar != nil {
+						fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", validar, validar.Nombre, validar.Calificacion)
+						fmt.Fprintf(s, "node%p->node%p;\n", validar1, validar)
+						fmt.Fprintf(s, "node%p->node%p;\n", validar, validar1)
+						fmt.Fprintf(s, "{rank:same;node%p;node%p}\n", validar, validar1)
+						validar1 = validar
+						validar = validar.Next
+					}
+				}
+
 				//graficar(anterior.siguiente, s, anterior)
 			}
 		}
 		graficar(count+1, s, count)
-	}
-}
-
-func graficar_Tiendas(anterior *Node_Tienda, s *strings.Builder, actual *Node_Tienda) {
-	if anterior != nil {
-		fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", &(*anterior), anterior.Nombre, anterior.Calificacion)
-		if actual != nil {
-			fmt.Fprintf(s, "node%p->node%p;\n", &(*actual), &(*anterior))
-			fmt.Fprintf(s, "node%p->node%p;\n", &(*anterior), &(*actual))
-		}
-		graficar_Tiendas(anterior.Next, s, anterior)
 	}
 }
 
