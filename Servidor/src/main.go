@@ -23,6 +23,11 @@ type Message struct {
 	Age  int    `json:"Age"`
 }
 
+type TE struct {
+	Departamento string `json:"Departamento"`
+	Nombre       string `json:"Nombre"`
+	Calificacion int    `json:"Calificacion"`
+}
 type Tienda struct {
 	Nombre       string `json:"Nombre"`
 	Descripcion  string `json:"Descripcion"`
@@ -96,11 +101,13 @@ func Add(w http.ResponseWriter, r *http.Request) {
 
 		}
 	}
-	Listas.Print_Vector()
+
 	Listas.Convertir_Matriz()
+
+}
+func Get_Arreglo(w http.ResponseWriter, r *http.Request) {
 	Listas.Graficar()
 }
-
 func number(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	b, _ := strconv.Atoi(vars["id"])
@@ -109,12 +116,36 @@ func number(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusFound)
 	json.NewEncoder(w).Encode(a)
 }
+func Tienda_Especifica(w http.ResponseWriter, r *http.Request) {
+	reqBody, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Fprintf(w, "Error al Insertar")
+
+	}
+	var Tienda TE
+	er := json.Unmarshal(reqBody, &Tienda)
+	if er != nil {
+		fmt.Fprintf(w, "Error al Insertar el segundo")
+	}
+	fmt.Println(Tienda.Nombre)
+	var tiendass *Listas.Node_Tienda
+	tiendass = Listas.Tie_Esp(Tienda.Departamento, Tienda.Nombre, Tienda.Calificacion)
+	if tiendass != nil {
+		fmt.Fprintf(w, "Nombre: "+tiendass.Nombre)
+		fmt.Fprintf(w, "Descripcion: "+tiendass.Descripcion)
+		fmt.Fprintf(w, "Contacto: "+tiendass.Contacto)
+		fmt.Fprintf(w, "Calificacion: "+strconv.Itoa(tiendass.Calificacion))
+
+	}
+}
 
 func main() {
 
 	router := mux.NewRouter()
 	router.HandleFunc("/", start).Methods("GET")
 	router.HandleFunc("/cargartiendas", Add).Methods("POST")
+	router.HandleFunc("/getArreglo", Get_Arreglo).Methods("GET")
+	router.HandleFunc("/TiendaEspecifica", Tienda_Especifica).Methods("POST")
 	router.HandleFunc("/numero/{id}", number).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":3000", router))

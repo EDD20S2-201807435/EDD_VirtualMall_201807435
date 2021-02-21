@@ -327,3 +327,23 @@ func guardarArchivo(cadena string) {
 		return
 	}
 }
+
+func Tie_Esp(depa string, Nombre string, cal int) *Node_Tienda {
+
+	for i := 0; i < 100; i++ {
+		if Vector[i].Departamento == depa && Vector[i].Puntos == cal {
+			if Vector[i].Listatienda != nil {
+				aux := Vector[i].Listatienda.frist
+				for aux != nil {
+					if aux.Nombre == Nombre {
+						return aux
+					}
+					aux = aux.Next
+				}
+
+			}
+		}
+	}
+
+	return nil
+}
