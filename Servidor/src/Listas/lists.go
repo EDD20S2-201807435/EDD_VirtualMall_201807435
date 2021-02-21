@@ -272,7 +272,7 @@ func Graficar() string {
 
 func graficar(count int, s *strings.Builder, actual int) {
 	if Vector[count].Puntos != 0 {
-		fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", &Vector[count], Vector[count].Puntos, Vector[count].Departamento)
+		fmt.Fprintf(s, "node%p[label=\"%v|%v|%v\",color=blue,style =filled];\n", &Vector[count], Vector[count].Puntos, Vector[count].Departamento, Vector[count].Indice)
 		if Vector[actual].Puntos != 0 {
 			fmt.Fprintf(s, "node%p->node%p;\n", &Vector[actual], &Vector[count])
 			fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], &Vector[actual])
@@ -281,7 +281,7 @@ func graficar(count int, s *strings.Builder, actual int) {
 
 				var validar *Node_Tienda
 				validar = Vector[count].Listatienda.frist
-				fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", validar, validar.Nombre, validar.Calificacion)
+				fmt.Fprintf(s, "node%p[label=\"%v|%v\",color=green,style =filled];\n", validar, validar.Nombre, validar.Calificacion)
 				fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], validar)
 				fmt.Fprintf(s, "node%p->node%p;\n", validar, &Vector[count])
 				fmt.Fprintf(s, "{rank:same;node%p;node%p}\n", validar, &Vector[count])
@@ -292,7 +292,7 @@ func graficar(count int, s *strings.Builder, actual int) {
 				if validar != nil {
 
 					for validar != nil {
-						fmt.Fprintf(s, "node%p[label=\"%v|%v\"];\n", validar, validar.Nombre, validar.Calificacion)
+						fmt.Fprintf(s, "node%p[label=\"%v|%v\",color=green,style =filled];\n", validar, validar.Nombre, validar.Calificacion)
 						fmt.Fprintf(s, "node%p->node%p;\n", validar1, validar)
 						fmt.Fprintf(s, "node%p->node%p;\n", validar, validar1)
 						fmt.Fprintf(s, "{rank:same;node%p;node%p}\n", validar, validar1)
