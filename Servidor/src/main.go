@@ -33,20 +33,21 @@ type Tienda struct {
 	Descripcion  string `json:"Descripcion"`
 	Contacto     string `json:"Contacto"`
 	Calificacion int    `json:"Calificacion"`
+	Logo         string `json:"Logo"`
 }
 
 type Departamento struct {
-	Nombre  string    `json:"Nombre"`
-	Tiendas [8]Tienda `json:"Tiendas"`
+	Nombre  string      `json:"Nombre"`
+	Tiendas [100]Tienda `json:"Tiendas"`
 }
 
 type Datos struct {
-	Indice        string          `json:"Indice"`
-	Departamentos [8]Departamento `json:"Departamentos"`
+	Indice        string            `json:"Indice"`
+	Departamentos [100]Departamento `json:"Departamentos"`
 }
 
 type Dato struct {
-	Datos [5]Datos `json:"Datos"`
+	Datos [100]Datos `json:"Datos"`
 }
 
 func Add(w http.ResponseWriter, r *http.Request) {
@@ -62,7 +63,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println(dat.Datos[1].Indice)
 	list_File := Listas.NewList_Datos()
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 100; i++ {
 		//Si Hay un Nuevo Inidice
 		if dat.Datos[i].Indice != "" {
 			//Add Indices y Datos
@@ -70,7 +71,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
 			list_File.Add_Dato(&datoo)
 			//Add Departamentos
 			list_departamento := Listas.NewList_Departamentos()
-			for j := 0; j < 8; j++ {
+			for j := 0; j < 100; j++ {
 				if dat.Datos[i].Departamentos[j].Nombre != "" {
 					//Departamento Existente
 					depa := Listas.Node_Departamento{dat.Datos[i].Departamentos[j].Nombre, dat.Datos[i].Indice, nil, nil}
@@ -84,11 +85,11 @@ func Add(w http.ResponseWriter, r *http.Request) {
 					//Add Tiendas a Calificaciones
 					for w := 0; w < 5; w++ {
 						listinda := Listas.NewLista_Tienda()
-						for l := 0; l < 8; l++ {
+						for l := 0; l < 100; l++ {
 
 							if dat.Datos[i].Departamentos[j].Tiendas[l].Nombre != "" {
 								if dat.Datos[i].Departamentos[j].Tiendas[l].Calificacion == (w + 1) {
-									store := Listas.Node_Tienda{dat.Datos[i].Departamentos[j].Tiendas[l].Nombre, dat.Datos[i].Departamentos[j].Tiendas[l].Descripcion, dat.Datos[i].Departamentos[j].Tiendas[l].Contacto, dat.Datos[i].Departamentos[j].Nombre, dat.Datos[i].Indice, dat.Datos[i].Departamentos[j].Tiendas[l].Calificacion, nil, nil}
+									store := Listas.Node_Tienda{dat.Datos[i].Departamentos[j].Tiendas[l].Nombre, dat.Datos[i].Departamentos[j].Tiendas[l].Descripcion, dat.Datos[i].Departamentos[j].Tiendas[l].Contacto, dat.Datos[i].Departamentos[j].Nombre, dat.Datos[i].Indice, dat.Datos[i].Departamentos[j].Tiendas[l].Calificacion, dat.Datos[i].Departamentos[j].Tiendas[l].Logo, nil, nil}
 									listinda.Add_Tienda(&store)
 								}
 							}
@@ -103,10 +104,11 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	}
 
 	Listas.Convertir_Matriz()
-
+	Listas.Graf_Vector()
+	Listas.Print_Vector()
 }
 func Get_Arreglo(w http.ResponseWriter, r *http.Request) {
-	Listas.Graficar()
+	Listas.Graficar(0, 0)
 }
 func number(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)

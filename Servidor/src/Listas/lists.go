@@ -23,6 +23,7 @@ type Node_Tienda struct {
 	Departamento string
 	Letra        string
 	Calificacion int
+	Logo         string
 	Next         *Node_Tienda
 	Last         *Node_Tienda
 }
@@ -56,7 +57,7 @@ type Calificacion struct {
 	Listatienda  *List_Tienda
 }
 
-var Matriz [5][30]Calificacion
+var Matriz [2000][2000]Calificacion
 
 type List_Departamentos struct {
 	frist, last *Node_Departamento
@@ -122,7 +123,8 @@ func (this *List_Datos) Add_Dato(new *Node_Datos) Node_Datos {
 }
 
 func Add_Calificacion(new Calificacion, No_Indice int) Calificacion {
-	for i := 0; i < 30; i++ {
+	fmt.Println("El tamño de la matriz es " + strconv.Itoa(len(Matriz)))
+	for i := 0; i < len(Matriz); i++ {
 		if Matriz[No_Indice][i].Puntos == 0 {
 			Matriz[No_Indice][i] = new
 			return new
@@ -190,8 +192,8 @@ func (this *List_Tienda) Return_Tienda() *List_Tienda {
 
 func Print_Vector() {
 	fmt.Println("Lista--------------")
-	for i := 0; i < 5; i++ {
-		for j := 0; j < 30; j++ {
+	for i := 0; i < len(Matriz); i++ {
+		for j := 0; j < len(Matriz[i]); j++ {
 			if Matriz[i][j].Puntos != 0 {
 				fmt.Println("Calificacion " + strconv.Itoa(Matriz[i][j].Puntos) + "Departamento: " + Matriz[i][j].Departamento + " Indice: " + Matriz[i][j].Indice)
 				if Matriz[i][j].Listatienda != nil {
@@ -223,8 +225,8 @@ func (this *List_Datos) Print_Dato() {
 
 func Search_Calificacion(depa string, indi string, cal int, Tiendaa *List_Tienda) {
 
-	for i := 0; i < 5; i++ {
-		for j := 0; j < 30; j++ {
+	for i := 0; i < len(Matriz); i++ {
+		for j := 0; j < len(Matriz[i]); j++ {
 			if Matriz[i][j].Puntos != 0 {
 				if (Matriz[i][j].Departamento == depa) && (Matriz[i][j].Indice == indi) && (Matriz[i][j].Puntos == cal) {
 					Matriz[i][j].Listatienda = Tiendaa
@@ -235,13 +237,13 @@ func Search_Calificacion(depa string, indi string, cal int, Tiendaa *List_Tienda
 	}
 }
 
-var Vector [100]Calificacion
+var Vector [4000000]Calificacion
 
 func Convertir_Matriz() {
 	var Contador int
 	Contador = 0
-	for i := 0; i < 5; i++ {
-		for j := 0; j < 30; j++ {
+	for i := 0; i < len(Matriz); i++ {
+		for j := 0; j < len(Matriz[i]); j++ {
 			if Matriz[i][j].Puntos != 0 {
 				Vector[Contador] = Matriz[i][j]
 				Contador++
@@ -251,31 +253,39 @@ func Convertir_Matriz() {
 	}
 }
 
-func Graficar() string {
-	var cadena strings.Builder
-	fmt.Fprintf(&cadena, "digraph G{\n")
-	fmt.Fprintf(&cadena, "node[shape=box];\n")
-	fmt.Fprintf(&cadena, "rankdir=LR;\n")
-	fmt.Fprintf(&cadena, "graph[splines=polyline]\n")
+func Graficar(conteo int, centros int) string {
 
-	graficar(0, &cadena, 0)
-	fmt.Fprintf(&cadena, "}")
-	guardarArchivo(cadena.String())
-	path, _ := exec.LookPath("dot")
-	cmd, _ := exec.Command(path, "-Tpng", "./lista.dot").Output()
-	mode := int(0777)
-	ioutil.WriteFile("outfile.png", cmd, os.FileMode(mode))
+	var cadena strings.Builder
+	if centros < len(Vector) && Vector[centros].Puntos != 0 {
+		fmt.Fprintf(&cadena, "digraph G{\n")
+		fmt.Fprintf(&cadena, "node[shape=box];\n")
+		fmt.Fprintf(&cadena, "rankdir=TB;\n")
+		fmt.Fprintf(&cadena, "graph[splines=polyline]\n")
+
+		graficar(centros, &cadena, centros, 0)
+		fmt.Fprintf(&cadena, "}")
+		var name = strconv.Itoa(conteo) + ""
+		guardarArchivo(cadena.String(), name)
+		path, _ := exec.LookPath("dot")
+		cmd, _ := exec.Command(path, "-Tpng", "./"+name+"/"+name+".dot").Output()
+		mode := int(0777)
+		ioutil.WriteFile(name+"/"+name+".png", cmd, os.FileMode(mode))
+		Graficar(conteo+1, centros+5)
+	}
 
 	return cadena.String()
 
 }
 
-func graficar(count int, s *strings.Builder, actual int) {
-	if Vector[count].Puntos != 0 {
+func graficar(count int, s *strings.Builder, actual int, repetidor int) {
+	if Vector[count].Puntos != 0 && repetidor < 5 {
 		fmt.Fprintf(s, "node%p[label=\"%v|%v|%v\",color=blue,style =filled];\n", &Vector[count], Vector[count].Puntos, Vector[count].Departamento, Vector[count].Indice)
 		if Vector[actual].Puntos != 0 {
-			fmt.Fprintf(s, "node%p->node%p;\n", &Vector[actual], &Vector[count])
-			fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], &Vector[actual])
+			if &Vector[actual] != &Vector[count] {
+
+				fmt.Fprintf(s, "{rank=same;node%p;node%p}\n", &Vector[count], &Vector[actual])
+			}
+
 			//Print Listas
 			if Vector[count].Listatienda != nil {
 
@@ -284,7 +294,6 @@ func graficar(count int, s *strings.Builder, actual int) {
 				fmt.Fprintf(s, "node%p[label=\"%v|%v\",color=green,style =filled];\n", validar, validar.Nombre, validar.Calificacion)
 				fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], validar)
 				fmt.Fprintf(s, "node%p->node%p;\n", validar, &Vector[count])
-				fmt.Fprintf(s, "{rank:same;node%p;node%p}\n", validar, &Vector[count])
 
 				var validar1 *Node_Tienda
 				validar1 = validar
@@ -295,7 +304,7 @@ func graficar(count int, s *strings.Builder, actual int) {
 						fmt.Fprintf(s, "node%p[label=\"%v|%v\",color=green,style =filled];\n", validar, validar.Nombre, validar.Calificacion)
 						fmt.Fprintf(s, "node%p->node%p;\n", validar1, validar)
 						fmt.Fprintf(s, "node%p->node%p;\n", validar, validar1)
-						fmt.Fprintf(s, "{rank:same;node%p;node%p}\n", validar, validar1)
+
 						validar1 = validar
 						validar = validar.Next
 					}
@@ -304,12 +313,16 @@ func graficar(count int, s *strings.Builder, actual int) {
 				//graficar(anterior.siguiente, s, anterior)
 			}
 		}
-		graficar(count+1, s, count)
+		graficar(count+1, s, count, repetidor+1)
 	}
 }
 
-func guardarArchivo(cadena string) {
-	f, err := os.Create("lista.dot")
+func guardarArchivo(cadena string, name string) {
+	err1 := os.Mkdir(name, 0777)
+	if err1 != nil {
+		panic(err1)
+	}
+	f, err := os.Create(name + "/" + name + ".dot")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -330,7 +343,7 @@ func guardarArchivo(cadena string) {
 
 func Tie_Esp(depa string, Nombre string, cal int) *Node_Tienda {
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < len(Vector); i++ {
 		if Vector[i].Departamento == depa && Vector[i].Puntos == cal {
 			if Vector[i].Listatienda != nil {
 				aux := Vector[i].Listatienda.frist
@@ -346,4 +359,14 @@ func Tie_Esp(depa string, Nombre string, cal int) *Node_Tienda {
 	}
 
 	return nil
+}
+
+func Graf_Vector() {
+
+	for i := 0; i < len(Vector); i++ {
+		if Vector[i].Puntos != 0 {
+			fmt.Println("Nombre: " + Vector[i].Departamento + "Posicion: " + strconv.Itoa(i))
+		}
+	}
+
 }

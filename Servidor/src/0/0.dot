@@ -1,0 +1,20 @@
+digraph G{
+node[shape=box];
+rankdir=TB;
+graph[splines=polyline]
+node0xbed0220[label="1|Amazon Coins|A",color=blue,style =filled];
+node0xbed0250[label="2|Amazon Coins|A",color=blue,style =filled];
+{rank=same;node0xbed0250;node0xbed0220}
+node0xbed0280[label="3|Amazon Coins|A",color=blue,style =filled];
+{rank=same;node0xbed0280;node0xbed0250}
+node0xbed02b0[label="4|Amazon Coins|A",color=blue,style =filled];
+{rank=same;node0xbed02b0;node0xbed0280}
+node0xc0001a4080[label="Aguayo Cepeda S.A.|4",color=green,style =filled];
+node0xbed02b0->node0xc0001a4080;
+node0xc0001a4080->node0xbed02b0;
+node0xbed02e0[label="5|Amazon Coins|A",color=blue,style =filled];
+{rank=same;node0xbed02e0;node0xbed02b0}
+node0xc0001a4100[label="Amaya, Rolón y Chavarría Asociados|5",color=green,style =filled];
+node0xbed02e0->node0xc0001a4100;
+node0xc0001a4100->node0xbed02e0;
+}

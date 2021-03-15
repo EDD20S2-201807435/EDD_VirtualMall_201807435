@@ -1,0 +1,17 @@
+digraph G{
+node[shape=box];
+rankdir=TB;
+graph[splines=polyline]
+node0xbed04f0[label="1|Sensores|B",color=blue,style =filled];
+node0xc0001a4280[label="Briones Pineda S.A.|1",color=green,style =filled];
+node0xbed04f0->node0xc0001a4280;
+node0xc0001a4280->node0xbed04f0;
+node0xbed0520[label="2|Sensores|B",color=blue,style =filled];
+{rank=same;node0xbed0520;node0xbed04f0}
+node0xbed0550[label="3|Sensores|B",color=blue,style =filled];
+{rank=same;node0xbed0550;node0xbed0520}
+node0xbed0580[label="4|Sensores|B",color=blue,style =filled];
+{rank=same;node0xbed0580;node0xbed0550}
+node0xbed05b0[label="5|Sensores|B",color=blue,style =filled];
+{rank=same;node0xbed05b0;node0xbed0580}
+}
