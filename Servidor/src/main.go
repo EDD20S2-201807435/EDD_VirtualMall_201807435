@@ -36,6 +36,24 @@ type Tienda struct {
 	Logo         string `json:"Logo"`
 }
 
+type Productos struct {
+	Nombre      string  `json:"Nombre"`
+	Codigo      int     `json:"Codigo"`
+	Descripcion string  `json:"Descripcion"`
+	Precio      float64 `json:"Precio"`
+	Cantidad    int     `json:"Cantidad"`
+	Imagen      string  `json:"Imagen"`
+}
+type Inventario struct{
+	Tienda string `json:"Tienda"`
+    Departamento string `json:"Departamento"`
+    Calificacion int `json:"Calificacion"`
+    Productos[200] Productos `json:"Productos"`
+}
+type Inventarios struct {
+	Inventario [50000]Inventario `json:"Invetarios"`
+}
+
 type Departamento struct {
 	Nombre  string      `json:"Nombre"`
 	Tiendas [100]Tienda `json:"Tiendas"`
@@ -49,7 +67,39 @@ type Datos struct {
 type Dato struct {
 	Datos [100]Datos `json:"Datos"`
 }
+func Add_Producto(w http.ResponseWriter, r *http.Request){
+	reqBody, err := ioutil.ReadAll(r.Body)
+	
+	if err != nil {
+		fmt.Fprintf(w, "Error al Insertar")
 
+	}
+	var prod Inventarios
+	er := json.Unmarshal(reqBody, &prod)
+	if er != nil {
+		fmt.Fprintf(w, "Error al Insertar el segundo")
+	}
+	for i := 0; i < 50000; i++ {
+		if prod.Inventario[i].Tienda != "" {
+			var tiendass *Listas.Node_Tienda
+			tiendass = Listas.Tie_Esp(prod.Inventario[i].Departamento, prod.Inventario[i].Tienda, prod.Inventario[i].Calificacion)
+			if tiendass != nil {
+				if tiendass.Productos == nil {
+					tiendass.Productos = Listas.NewArbol()
+				}
+				for j := 0; j < 200; j++ {
+					if prod.Inventario[i].Productos[j].Nombre != "" {
+						tiendass.Productos.Insertar(prod.Inventario[i].Productos[j].Nombre,prod.Inventario[i].Productos[j].Codigo,prod.Inventario[i].Productos[j].Descripcion,prod.Inventario[i].Productos[j].Precio,prod.Inventario[i].Productos[j].Cantidad,prod.Inventario[i].Productos[j].Imagen)
+					}
+				}
+				tiendass.Productos.Generar(prod.Inventario[i].Tienda)
+			}
+		}
+	}
+	
+
+
+}
 func Add(w http.ResponseWriter, r *http.Request) {
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -89,7 +139,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
 
 							if dat.Datos[i].Departamentos[j].Tiendas[l].Nombre != "" {
 								if dat.Datos[i].Departamentos[j].Tiendas[l].Calificacion == (w + 1) {
-									store := Listas.Node_Tienda{dat.Datos[i].Departamentos[j].Tiendas[l].Nombre, dat.Datos[i].Departamentos[j].Tiendas[l].Descripcion, dat.Datos[i].Departamentos[j].Tiendas[l].Contacto, dat.Datos[i].Departamentos[j].Nombre, dat.Datos[i].Indice, dat.Datos[i].Departamentos[j].Tiendas[l].Calificacion, dat.Datos[i].Departamentos[j].Tiendas[l].Logo, nil, nil}
+									store := Listas.Node_Tienda{dat.Datos[i].Departamentos[j].Tiendas[l].Nombre, dat.Datos[i].Departamentos[j].Tiendas[l].Descripcion, dat.Datos[i].Departamentos[j].Tiendas[l].Contacto, dat.Datos[i].Departamentos[j].Nombre, dat.Datos[i].Indice, dat.Datos[i].Departamentos[j].Tiendas[l].Calificacion, dat.Datos[i].Departamentos[j].Tiendas[l].Logo,nil, nil, nil}
 									listinda.Add_Tienda(&store)
 								}
 							}
@@ -157,7 +207,8 @@ func main() {
 	router.HandleFunc("/getArreglo", Get_Arreglo).Methods("GET")
 	router.HandleFunc("/TiendaEspecifica", Tienda_Especifica).Methods("POST")
 	router.HandleFunc("/numero/{id}", number).Methods("GET")
-
+    router.HandleFunc("/a",Add_Producto).Methods("POST")
+	
 	log.Fatal(http.ListenAndServe(":3000", router))
 
 }

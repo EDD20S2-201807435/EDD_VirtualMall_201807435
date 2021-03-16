@@ -1,11 +1,21 @@
-package main
+package Listas
+
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+	"os/exec"
+	"strings"
+)
 
 type Nodo struct {
 	Nombre      string
-	Codigo      string
+	Codigo      int
 	Descripcion string
 	Precio      float64
 	Cantidad    int
+	Imagen      string
+	Factor      int
 	Izquierda   *Nodo
 	Derecha     *Nodo
 }
@@ -18,8 +28,8 @@ func NewArbol() *Arbol {
 	return &Arbol{nil}
 }
 
-func NewNodo(Nombre string, Codigo string, Descripcion string, Precio float64, Cantidad int) *Nodo {
-	return &Nodo{Nombre, Codigo, Descripcion, Precio, Cantidad, nil, nil}
+func NewNodo(Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string) *Nodo {
+	return &Nodo{Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, 0, nil, nil}
 }
 
 func rotacionII(n *Nodo, n1 *Nodo) *Nodo {
@@ -88,13 +98,13 @@ func rotacionID(n *Nodo, n1 *Nodo) *Nodo {
 	return n2
 }
 
-func insertar(raiz *Nodo, valor int, hc *bool) *Nodo {
+func insertar(raiz *Nodo, Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string, hc *bool) *Nodo {
 	var n1 *Nodo
 	if raiz == nil {
-		raiz = NewNodo(valor)
+		raiz = NewNodo(Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen)
 		*hc = true
-	} else if valor < raiz.Valor {
-		izq := insertar(raiz.Izquierda, valor, hc)
+	} else if Codigo < raiz.Codigo {
+		izq := insertar(raiz.Izquierda, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, hc)
 		raiz.Izquierda = izq
 		if *hc {
 			switch raiz.Factor {
@@ -115,8 +125,8 @@ func insertar(raiz *Nodo, valor int, hc *bool) *Nodo {
 				*hc = false
 			}
 		}
-	} else if valor > raiz.Valor {
-		der := insertar(raiz.Derecha, valor, hc)
+	} else if Codigo > raiz.Codigo {
+		der := insertar(raiz.Derecha, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, hc)
 		raiz.Derecha = der
 		if *hc {
 			switch raiz.Factor {
@@ -142,8 +152,39 @@ func insertar(raiz *Nodo, valor int, hc *bool) *Nodo {
 	return raiz
 }
 
-func (this *Arbol) Insertar(valor int) {
+func (this *Arbol) Insertar(Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string) {
 	b := false
 	a := &b
-	this.raiz = insertar(this.raiz, valor, a)
+	this.raiz = insertar(this.raiz, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, a)
+}
+
+func (this *Arbol) Generar(name string) {
+	var cadena strings.Builder
+	fmt.Fprintf(&cadena, "digraph G{\n")
+	fmt.Fprintf(&cadena, "node[shape=\"record\"];\n")
+	if this.raiz != nil {
+		fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v factor: %v|<f2>\",color=green,style =filled];\n", &(*this.raiz), this.raiz.Codigo, this.raiz.Factor)
+		this.generar(&cadena, (this.raiz), this.raiz.Izquierda, true)
+		this.generar(&cadena, this.raiz, this.raiz.Derecha, false)
+	}
+	fmt.Fprintf(&cadena, "}\n")
+	guardarArchivo(cadena.String(), name)
+		path, _ := exec.LookPath("dot")
+		cmd, _ := exec.Command(path, "-Tpng", "./"+name+"/"+name+".dot").Output()
+		mode := int(0777)
+		ioutil.WriteFile(name+"/"+name+".png", cmd, os.FileMode(mode))	
+	fmt.Println(cadena.String())
+}
+
+func (this *Arbol) generar(cadena *strings.Builder, padre *Nodo, actual *Nodo, Izquierda bool) {
+	if actual != nil {
+		fmt.Fprintf(cadena, "node%p[label=\"<f0>|<f1>%v factor: %v|<f2>\",color=green,style =filled];\n", &(*actual), actual.Codigo, actual.Factor)
+		if Izquierda {
+			fmt.Fprintf(cadena, "node%p:f0->node%p:f1\n", &(*padre), &(*actual))
+		} else {
+			fmt.Fprintf(cadena, "node%p:f2->node%p:f1\n", &(*padre), &(*actual))
+		}
+		this.generar(cadena, actual, actual.Izquierda, true)
+		this.generar(cadena, actual, actual.Derecha, false)
+	}
 }

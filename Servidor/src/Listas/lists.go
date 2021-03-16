@@ -24,6 +24,7 @@ type Node_Tienda struct {
 	Letra        string
 	Calificacion int
 	Logo         string
+	Productos *Arbol
 	Next         *Node_Tienda
 	Last         *Node_Tienda
 }
@@ -123,7 +124,7 @@ func (this *List_Datos) Add_Dato(new *Node_Datos) Node_Datos {
 }
 
 func Add_Calificacion(new Calificacion, No_Indice int) Calificacion {
-	fmt.Println("El tamño de la matriz es " + strconv.Itoa(len(Matriz)))
+	
 	for i := 0; i < len(Matriz); i++ {
 		if Matriz[No_Indice][i].Puntos == 0 {
 			Matriz[No_Indice][i] = new
@@ -179,8 +180,7 @@ func (this *List) Print() {
 }
 
 func (this *List_Tienda) Print_Tienda() {
-	fmt.Println("Lista--------------")
-	fmt.Println(this.To_string_Tienda())
+	
 }
 func (this *List_Tienda) Return_Tienda() *List_Tienda {
 	aux := this.frist
@@ -191,13 +191,12 @@ func (this *List_Tienda) Return_Tienda() *List_Tienda {
 }
 
 func Print_Vector() {
-	fmt.Println("Lista--------------")
+	
 	for i := 0; i < len(Matriz); i++ {
 		for j := 0; j < len(Matriz[i]); j++ {
 			if Matriz[i][j].Puntos != 0 {
-				fmt.Println("Calificacion " + strconv.Itoa(Matriz[i][j].Puntos) + "Departamento: " + Matriz[i][j].Departamento + " Indice: " + Matriz[i][j].Indice)
 				if Matriz[i][j].Listatienda != nil {
-					fmt.Println(Matriz[i][j].Listatienda.To_string_Tienda())
+					
 				}
 			}
 		}
