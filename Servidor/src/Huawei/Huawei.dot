@@ -1,0 +1,12 @@
+digraph G{
+node[shape="record"];
+node0xc004686060[label="<f0>|<f1>1222  P40 Pro: 30|<f2>",color=green,style =filled];
+node0xc004686120[label="<f0>|<f1>10 Mate 50 Pro: 20|<f2>",color=green,style =filled];
+node0xc004686060:f0->node0xc004686120:f1
+node0xc0046861e0[label="<f0>|<f1>1 Mate 70 Pro: 60|<f2>",color=green,style =filled];
+node0xc004686120:f0->node0xc0046861e0:f1
+node0xc0046860c0[label="<f0>|<f1>1232 Mate 40 Pro: 20|<f2>",color=green,style =filled];
+node0xc004686060:f2->node0xc0046860c0:f1
+node0xc004686180[label="<f0>|<f1>2232 Mate 60 Pro: 20|<f2>",color=green,style =filled];
+node0xc0046860c0:f2->node0xc004686180:f1
+}

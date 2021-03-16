@@ -89,7 +89,11 @@ func Add_Producto(w http.ResponseWriter, r *http.Request){
 				}
 				for j := 0; j < 200; j++ {
 					if prod.Inventario[i].Productos[j].Nombre != "" {
-						tiendass.Productos.Insertar(prod.Inventario[i].Productos[j].Nombre,prod.Inventario[i].Productos[j].Codigo,prod.Inventario[i].Productos[j].Descripcion,prod.Inventario[i].Productos[j].Precio,prod.Inventario[i].Productos[j].Cantidad,prod.Inventario[i].Productos[j].Imagen)
+						comprabacion := tiendass.Productos.Buscar_Producto(prod.Inventario[i].Productos[j].Codigo,prod.Inventario[i].Productos[j].Cantidad)
+						if comprabacion == nil {
+							tiendass.Productos.Insertar(prod.Inventario[i].Productos[j].Nombre,prod.Inventario[i].Productos[j].Codigo,prod.Inventario[i].Productos[j].Descripcion,prod.Inventario[i].Productos[j].Precio,prod.Inventario[i].Productos[j].Cantidad,prod.Inventario[i].Productos[j].Imagen)
+						}
+						
 					}
 				}
 				tiendass.Productos.Generar(prod.Inventario[i].Tienda)

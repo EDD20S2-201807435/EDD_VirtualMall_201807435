@@ -163,7 +163,7 @@ func (this *Arbol) Generar(name string) {
 	fmt.Fprintf(&cadena, "digraph G{\n")
 	fmt.Fprintf(&cadena, "node[shape=\"record\"];\n")
 	if this.raiz != nil {
-		fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v factor: %v|<f2>\",color=green,style =filled];\n", &(*this.raiz), this.raiz.Codigo, this.raiz.Factor)
+		fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v  "+this.raiz.Nombre+": %v|<f2>\",color=green,style =filled];\n", &(*this.raiz), this.raiz.Codigo, this.raiz.Cantidad)
 		this.generar(&cadena, (this.raiz), this.raiz.Izquierda, true)
 		this.generar(&cadena, this.raiz, this.raiz.Derecha, false)
 	}
@@ -173,12 +173,12 @@ func (this *Arbol) Generar(name string) {
 		cmd, _ := exec.Command(path, "-Tpng", "./"+name+"/"+name+".dot").Output()
 		mode := int(0777)
 		ioutil.WriteFile(name+"/"+name+".png", cmd, os.FileMode(mode))	
-	fmt.Println(cadena.String())
+	
 }
 
 func (this *Arbol) generar(cadena *strings.Builder, padre *Nodo, actual *Nodo, Izquierda bool) {
 	if actual != nil {
-		fmt.Fprintf(cadena, "node%p[label=\"<f0>|<f1>%v factor: %v|<f2>\",color=green,style =filled];\n", &(*actual), actual.Codigo, actual.Factor)
+		fmt.Fprintf(cadena, "node%p[label=\"<f0>|<f1>%v "+actual.Nombre+": %v|<f2>\",color=green,style =filled];\n", &(*actual), actual.Codigo, actual.Cantidad)
 		if Izquierda {
 			fmt.Fprintf(cadena, "node%p:f0->node%p:f1\n", &(*padre), &(*actual))
 		} else {
@@ -187,4 +187,42 @@ func (this *Arbol) generar(cadena *strings.Builder, padre *Nodo, actual *Nodo, I
 		this.generar(cadena, actual, actual.Izquierda, true)
 		this.generar(cadena, actual, actual.Derecha, false)
 	}
+}
+
+func (this *Arbol) Buscar_Producto(codigo int,cantidad int)*Nodo {
+	var cadena strings.Builder
+	if this.raiz != nil {
+		if this.raiz.Codigo == codigo{
+			this.raiz.Cantidad = this.raiz.Cantidad + cantidad
+			return this.raiz
+		}
+		a := this.buscar_Producto(&cadena, (this.raiz), this.raiz.Izquierda, true,codigo,cantidad)
+		b:=this.buscar_Producto(&cadena, this.raiz, this.raiz.Derecha, false,codigo,cantidad)
+		if a != nil {
+			return a
+		}else if b!=nil{
+			return b
+		}
+	}
+	
+	return nil
+}
+
+func (this *Arbol) buscar_Producto(cadena *strings.Builder, padre *Nodo, actual *Nodo, Izquierda bool,codigo int,cantidad int)*Nodo {
+	if actual != nil {
+		if Izquierda {
+			if actual.Codigo == codigo {
+				actual.Cantidad = actual.Cantidad + cantidad
+				return actual
+			}
+		} else {
+			if actual.Codigo == codigo {
+				actual.Cantidad = actual.Cantidad + cantidad
+				return actual
+			}
+		}
+		this.buscar_Producto(cadena, actual, actual.Izquierda, true,codigo,cantidad)
+		this.buscar_Producto(cadena, actual, actual.Derecha, false,codigo,cantidad)
+	}
+	return nil
 }

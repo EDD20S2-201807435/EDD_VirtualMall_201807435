@@ -364,7 +364,7 @@ func Graf_Vector() {
 
 	for i := 0; i < len(Vector); i++ {
 		if Vector[i].Puntos != 0 {
-			fmt.Println("Nombre: " + Vector[i].Departamento + "Posicion: " + strconv.Itoa(i))
+			
 		}
 	}
 
