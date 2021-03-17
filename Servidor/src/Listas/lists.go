@@ -58,7 +58,7 @@ type Calificacion struct {
 	Listatienda  *List_Tienda
 }
 
-var Matriz [2000][2000]Calificacion
+var Matriz1 [2000][2000]Calificacion
 
 type List_Departamentos struct {
 	frist, last *Node_Departamento
@@ -125,9 +125,9 @@ func (this *List_Datos) Add_Dato(new *Node_Datos) Node_Datos {
 
 func Add_Calificacion(new Calificacion, No_Indice int) Calificacion {
 	
-	for i := 0; i < len(Matriz); i++ {
-		if Matriz[No_Indice][i].Puntos == 0 {
-			Matriz[No_Indice][i] = new
+	for i := 0; i < len(Matriz1); i++ {
+		if Matriz1[No_Indice][i].Puntos == 0 {
+			Matriz1[No_Indice][i] = new
 			return new
 		}
 	}
@@ -175,8 +175,7 @@ func (this *List_Tienda) To_string_Tienda() string {
 }
 
 func (this *List) Print() {
-	fmt.Println("Lista--------------")
-	fmt.Println(this.To_string())
+	
 }
 
 func (this *List_Tienda) Print_Tienda() {
@@ -192,10 +191,10 @@ func (this *List_Tienda) Return_Tienda() *List_Tienda {
 
 func Print_Vector() {
 	
-	for i := 0; i < len(Matriz); i++ {
-		for j := 0; j < len(Matriz[i]); j++ {
-			if Matriz[i][j].Puntos != 0 {
-				if Matriz[i][j].Listatienda != nil {
+	for i := 0; i < len(Matriz1); i++ {
+		for j := 0; j < len(Matriz1[i]); j++ {
+			if Matriz1[i][j].Puntos != 0 {
+				if Matriz1[i][j].Listatienda != nil {
 					
 				}
 			}
@@ -224,11 +223,11 @@ func (this *List_Datos) Print_Dato() {
 
 func Search_Calificacion(depa string, indi string, cal int, Tiendaa *List_Tienda) {
 
-	for i := 0; i < len(Matriz); i++ {
-		for j := 0; j < len(Matriz[i]); j++ {
-			if Matriz[i][j].Puntos != 0 {
-				if (Matriz[i][j].Departamento == depa) && (Matriz[i][j].Indice == indi) && (Matriz[i][j].Puntos == cal) {
-					Matriz[i][j].Listatienda = Tiendaa
+	for i := 0; i < len(Matriz1); i++ {
+		for j := 0; j < len(Matriz1[i]); j++ {
+			if Matriz1[i][j].Puntos != 0 {
+				if (Matriz1[i][j].Departamento == depa) && (Matriz1[i][j].Indice == indi) && (Matriz1[i][j].Puntos == cal) {
+					Matriz1[i][j].Listatienda = Tiendaa
 				}
 			}
 		}
@@ -241,10 +240,10 @@ var Vector [4000000]Calificacion
 func Convertir_Matriz() {
 	var Contador int
 	Contador = 0
-	for i := 0; i < len(Matriz); i++ {
-		for j := 0; j < len(Matriz[i]); j++ {
-			if Matriz[i][j].Puntos != 0 {
-				Vector[Contador] = Matriz[i][j]
+	for i := 0; i < len(Matriz1); i++ {
+		for j := 0; j < len(Matriz1[i]); j++ {
+			if Matriz1[i][j].Puntos != 0 {
+				Vector[Contador] = Matriz1[i][j]
 				Contador++
 			}
 		}
@@ -317,6 +316,12 @@ func graficar(count int, s *strings.Builder, actual int, repetidor int) {
 }
 
 func guardarArchivo(cadena string, name string) {
+	err34 := os.RemoveAll(name)
+	if err34 != nil {
+		fmt.Printf("Error eliminando carpeta con contenido: %v\n", err34)
+	  } else {
+		fmt.Println("Eliminada correctamente")
+	}
 	err1 := os.Mkdir(name, 0777)
 	if err1 != nil {
 		panic(err1)
