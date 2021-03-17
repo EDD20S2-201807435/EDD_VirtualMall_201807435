@@ -1,0 +1,16 @@
+digraph G{
+node[shape="record"];
+node0xc00484a180[label="<f0>|<f1>783  Práctica Acero Queso: 339|<f2>",color=green,style =filled];
+node0xc00484a060[label="<f0>|<f1>781 Sabrosa Cotton Pantalones: 236|<f2>",color=green,style =filled];
+node0xc00484a180:f0->node0xc00484a060:f1
+node0xc00484a1e0[label="<f0>|<f1>782 Licencia Caucho Pelota: 250|<f2>",color=green,style =filled];
+node0xc00484a060:f2->node0xc00484a1e0:f1
+node0xc00484a000[label="<f0>|<f1>786 Elegante Metal Camisa: 341|<f2>",color=green,style =filled];
+node0xc00484a180:f2->node0xc00484a000:f1
+node0xc00484a120[label="<f0>|<f1>784 Increíble Fresco Tocino: 384|<f2>",color=green,style =filled];
+node0xc00484a000:f0->node0xc00484a120:f1
+node0xc00484a240[label="<f0>|<f1>785 Refinado Hormigón Embutidos: 235|<f2>",color=green,style =filled];
+node0xc00484a120:f2->node0xc00484a240:f1
+node0xc00484a0c0[label="<f0>|<f1>787 Rústico Acero Embutidos: 348|<f2>",color=green,style =filled];
+node0xc00484a000:f2->node0xc00484a0c0:f1
+}

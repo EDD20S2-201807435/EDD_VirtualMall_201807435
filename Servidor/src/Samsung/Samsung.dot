@@ -1,0 +1,6 @@
+digraph G{
+node[shape="record"];
+node0xc00008e060[label="<f0>|<f1>1234  s8: 25|<f2>",color=green,style =filled];
+node0xc00008e120[label="<f0>|<f1>1233 s9: 10|<f2>",color=green,style =filled];
+node0xc00008e060:f0->node0xc00008e120:f1
+}

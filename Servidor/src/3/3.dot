@@ -1,0 +1,17 @@
+digraph G{
+node[shape=box];
+rankdir=TB;
+graph[splines=polyline]
+node0xc49c4f0[label="1|Television y video|B",color=blue,style =filled];
+node0xc49c520[label="2|Television y video|B",color=blue,style =filled];
+{rank=same;node0xc49c520;node0xc49c4f0}
+node0xc0000be380[label="Borrego Rocha e Hijos|2",color=green,style =filled];
+node0xc49c520->node0xc0000be380;
+node0xc0000be380->node0xc49c520;
+node0xc49c550[label="3|Television y video|B",color=blue,style =filled];
+{rank=same;node0xc49c550;node0xc49c520}
+node0xc49c580[label="4|Television y video|B",color=blue,style =filled];
+{rank=same;node0xc49c580;node0xc49c550}
+node0xc49c5b0[label="5|Television y video|B",color=blue,style =filled];
+{rank=same;node0xc49c5b0;node0xc49c580}
+}

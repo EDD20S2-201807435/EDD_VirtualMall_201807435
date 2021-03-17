@@ -51,7 +51,7 @@ type Inventario struct{
     Productos[200] Productos `json:"Productos"`
 }
 type Inventarios struct {
-	Inventario [50000]Inventario `json:"Invetarios"`
+	Inventario [50000]Inventario `json:"Inventarios"`
 }
 
 type Departamento struct {

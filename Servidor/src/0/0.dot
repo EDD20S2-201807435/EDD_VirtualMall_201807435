@@ -1,0 +1,23 @@
+digraph G{
+node[shape=box];
+rankdir=TB;
+graph[splines=polyline]
+node0xc49c220[label="1|Seguridad y vigilancia|A",color=blue,style =filled];
+node0xc49c250[label="2|Seguridad y vigilancia|A",color=blue,style =filled];
+{rank=same;node0xc49c250;node0xc49c220}
+node0xc0000be080[label="Agosto, Hernández y Ojeda Asociados|2",color=green,style =filled];
+node0xc49c250->node0xc0000be080;
+node0xc0000be080->node0xc49c250;
+node0xc0000be100[label="Alvarez Loya S.A.|2",color=green,style =filled];
+node0xc0000be080->node0xc0000be100;
+node0xc0000be100->node0xc0000be080;
+node0xc49c280[label="3|Seguridad y vigilancia|A",color=blue,style =filled];
+{rank=same;node0xc49c280;node0xc49c250}
+node0xc0000be180[label="Alejandro Hermanos|3",color=green,style =filled];
+node0xc49c280->node0xc0000be180;
+node0xc0000be180->node0xc49c280;
+node0xc49c2b0[label="4|Seguridad y vigilancia|A",color=blue,style =filled];
+{rank=same;node0xc49c2b0;node0xc49c280}
+node0xc49c2e0[label="5|Seguridad y vigilancia|A",color=blue,style =filled];
+{rank=same;node0xc49c2e0;node0xc49c2b0}
+}
