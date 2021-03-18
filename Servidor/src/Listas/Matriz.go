@@ -16,7 +16,7 @@ type NodoPedido struct {
 	Tienda string
 	Departamento string
 	Calificacion int
-	Productos *Nodo
+	Productos *List_Producto
 }
 
 type NodoCabeceraVertical struct {
@@ -306,7 +306,7 @@ func (this *Matriz) Imprimir2() {
 		aux = aux.(*NodoCabeceraHorizontal).ESTE
 	}
 }
-func(this *Matriz)Grafo(){
+func(this *Matriz)Grafo(name string){
 	var cadena strings.Builder
 	fmt.Fprintf(&cadena, "digraph G{\n")
 	fmt.Fprintf(&cadena, "node[shape=\"record\"];\n")
@@ -314,7 +314,7 @@ func(this *Matriz)Grafo(){
 	//
 	var aux123 interface{} = this.CabH
 	for aux123 != nil {
-		fmt.Print(aux123.(*NodoCabeceraHorizontal).Dia, "*****************")
+		
 		fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v  "+strconv.Itoa(aux123.(*NodoCabeceraHorizontal).Dia)+": %v|<f2>\",color=green,style =filled];\n",  &(*aux123.(*NodoCabeceraHorizontal)), "", "")
 		aux123 = aux123.(*NodoCabeceraHorizontal).ESTE
 	}
@@ -375,7 +375,7 @@ func(this *Matriz)Grafo(){
 		fmt.Println("")
 		aux12 = aux12.(*NodoCabeceraHorizontal).ESTE
 	}
-	name := "MAtrizDispersa"
+	
 	fmt.Fprintf(&cadena, "}\n")
 	guardarArchivo(cadena.String(), name)
 		path, _ := exec.LookPath("dot")

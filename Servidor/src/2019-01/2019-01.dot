@@ -1,0 +1,25 @@
+digraph G{
+node[shape="record"];
+rankdir=LR;
+node0xc000094e60[label="<f0>|<f1>  5: |<f2>",color=green,style =filled];
+node0xc000094960[label="<f0>|<f1>  16: |<f2>",color=green,style =filled];
+node0xc000094910[label="<f0>|<f1>  Seguridad y vigilancia: |<f2>",color=green,style =filled];
+node0xc0000f0b80[label="<f0>|<f1>5  Seguridad y vigilancia: |<f2>",color=green,style =filled];
+node0xc000094910->node0xc0000f0b80;
+node0xc0000f0b80->node0xc000094910;
+node0xc0000f0e80[label="<f0>|<f1>16  Seguridad y vigilancia: |<f2>",color=green,style =filled];
+node0xc0000f0b80->node0xc0000f0e80;
+node0xc0000f0e80->node0xc0000f0b80;
+{rank=same;node0xc0000f0e80;node0xc0000f0b80}
+node0xc0000f0700[label="<f0>|<f1>16  Seguridad y vigilancia: |<f2>",color=green,style =filled];
+node0xc0000f0e80->node0xc0000f0700;
+node0xc0000f0700->node0xc0000f0e80;
+{rank=same;node0xc0000f0700;node0xc0000f0e80}
+node0xc000094e60->node0xc0000f0b80;
+node0xc0000f0b80->node0xc000094e60;
+node0xc000094960->node0xc0000f0e80;
+node0xc0000f0e80->node0xc000094960;
+node0xc0000f0e80->node0xc0000f0700;
+node0xc0000f0700->node0xc0000f0e80;
+{rank=same;rankdir=LR;node0xc0000f0700;node0xc0000f0e80}
+}

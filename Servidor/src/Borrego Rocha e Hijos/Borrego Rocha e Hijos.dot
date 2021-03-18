@@ -1,20 +1,20 @@
 digraph G{
 node[shape="record"];
-node0xc00004e660[label="<f0>|<f1>60  Fantástico Plástico Presidente: 90|<f2>",color=green,style =filled];
-node0xc00004e600[label="<f0>|<f1>57 Sin marca Caucho Tuna: 326|<f2>",color=green,style =filled];
-node0xc00004e660:f0->node0xc00004e600:f1
-node0xc00004e720[label="<f0>|<f1>56 Inteligente Fresco Pantalones: 349|<f2>",color=green,style =filled];
-node0xc00004e600:f0->node0xc00004e720:f1
-node0xc00004e8a0[label="<f0>|<f1>55 Genérica Hormigón Tuna: 284|<f2>",color=green,style =filled];
-node0xc00004e720:f0->node0xc00004e8a0:f1
-node0xc00004e840[label="<f0>|<f1>58 Gorgeous Granito Tuna: 368|<f2>",color=green,style =filled];
-node0xc00004e600:f2->node0xc00004e840:f1
-node0xc00004e900[label="<f0>|<f1>59 Refinado Plástico Jabón: 202|<f2>",color=green,style =filled];
-node0xc00004e840:f2->node0xc00004e900:f1
-node0xc00004e6c0[label="<f0>|<f1>62 Sabrosa Granito Pelota: 386|<f2>",color=green,style =filled];
-node0xc00004e660:f2->node0xc00004e6c0:f1
-node0xc00004e780[label="<f0>|<f1>61 Fantástico Caucho Pescado: 110|<f2>",color=green,style =filled];
-node0xc00004e6c0:f0->node0xc00004e780:f1
-node0xc00004e7e0[label="<f0>|<f1>63 Pequeño Madera Teclado: 299|<f2>",color=green,style =filled];
-node0xc00004e6c0:f2->node0xc00004e7e0:f1
+node0xc0000d2480[label="<f0>|<f1>60  Fantástico Plástico Presidente: 90|<f2>",color=green,style =filled];
+node0xc0000d2420[label="<f0>|<f1>57 Sin marca Caucho Tuna: 326|<f2>",color=green,style =filled];
+node0xc0000d2480:f0->node0xc0000d2420:f1
+node0xc0000d2540[label="<f0>|<f1>56 Inteligente Fresco Pantalones: 349|<f2>",color=green,style =filled];
+node0xc0000d2420:f0->node0xc0000d2540:f1
+node0xc0000d26c0[label="<f0>|<f1>55 Genérica Hormigón Tuna: 284|<f2>",color=green,style =filled];
+node0xc0000d2540:f0->node0xc0000d26c0:f1
+node0xc0000d2660[label="<f0>|<f1>58 Gorgeous Granito Tuna: 368|<f2>",color=green,style =filled];
+node0xc0000d2420:f2->node0xc0000d2660:f1
+node0xc0000d2720[label="<f0>|<f1>59 Refinado Plástico Jabón: 202|<f2>",color=green,style =filled];
+node0xc0000d2660:f2->node0xc0000d2720:f1
+node0xc0000d24e0[label="<f0>|<f1>62 Sabrosa Granito Pelota: 386|<f2>",color=green,style =filled];
+node0xc0000d2480:f2->node0xc0000d24e0:f1
+node0xc0000d25a0[label="<f0>|<f1>61 Fantástico Caucho Pescado: 110|<f2>",color=green,style =filled];
+node0xc0000d24e0:f0->node0xc0000d25a0:f1
+node0xc0000d2600[label="<f0>|<f1>63 Pequeño Madera Teclado: 299|<f2>",color=green,style =filled];
+node0xc0000d24e0:f2->node0xc0000d2600:f1
 }

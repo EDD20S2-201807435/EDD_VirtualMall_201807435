@@ -67,26 +67,7 @@ type Datos struct {
 type Dato struct {
 	Datos [100]Datos `json:"Datos"`
 }
-func Add_Pedido(w http.ResponseWriter, r *http.Request){
-	dispersa := &Listas.Matriz{nil, nil}
-	persona := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: 5, Tienda: "Samsung", Departamento:"Tecnologia",Calificacion:1,Productos:nil}
-	persona2 := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: 10, Tienda: "Huawei", Departamento:"VideoJuegos",Calificacion:1,Productos:nil}
-	persona3 := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: 2, Tienda: "Xiamoi", Departamento:"Tecnologia",Calificacion:1,Productos:nil}
-	persona4 := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: 10, Tienda: "Mabel", Departamento:"Electrodomesticos",Calificacion:1,Productos:nil}
-	persona5 := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: 5, Tienda: "Scandia", Departamento:"Tecnologia",Calificacion:1,Productos:nil}
-	persona6 := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: 4, Tienda: "Apple", Departamento:"VideoJuegos",Calificacion:1,Productos:nil}
-	dispersa.Add(persona)
-	dispersa.Add(persona2)
-	dispersa.Add(persona3)
-	dispersa.Add(persona4)
-	dispersa.Add(persona5)
-	dispersa.Add(persona6)
-	dispersa.Imprimir()
-	dispersa.Grafo()
-	fmt.Println("++++++++")
-	dispersa.Imprimir2()
-	fmt.Println("A"[0])
-}
+
 func Add_Producto(w http.ResponseWriter, r *http.Request){
 	reqBody, err := ioutil.ReadAll(r.Body)
 	
@@ -232,7 +213,7 @@ func main() {
 	router.HandleFunc("/TiendaEspecifica", Tienda_Especifica).Methods("POST")
 	router.HandleFunc("/numero/{id}", number).Methods("GET")
     router.HandleFunc("/a",Add_Producto).Methods("POST")
-	router.HandleFunc("/gete", Add_Pedido).Methods("GET")
+	router.HandleFunc("/gete", Add_Pedido).Methods("POST")
 	
 	log.Fatal(http.ListenAndServe(":3000", router))
 

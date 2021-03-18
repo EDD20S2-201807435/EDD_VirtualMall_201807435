@@ -1,0 +1,11 @@
+digraph G{
+node[shape="record"];
+rankdir=LR;
+node0xc000094870[label="<f0>|<f1>  31: |<f2>",color=green,style =filled];
+node0xc000094820[label="<f0>|<f1>  Television y video: |<f2>",color=green,style =filled];
+node0xc0000f0680[label="<f0>|<f1>31  Television y video: |<f2>",color=green,style =filled];
+node0xc000094820->node0xc0000f0680;
+node0xc0000f0680->node0xc000094820;
+node0xc000094870->node0xc0000f0680;
+node0xc0000f0680->node0xc000094870;
+}
