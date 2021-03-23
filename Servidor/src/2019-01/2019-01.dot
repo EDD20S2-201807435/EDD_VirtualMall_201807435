@@ -1,25 +1,22 @@
 digraph G{
-node[shape="record"];
-rankdir=LR;
-node0xc000094e60[label="<f0>|<f1>  5: |<f2>",color=green,style =filled];
-node0xc000094960[label="<f0>|<f1>  16: |<f2>",color=green,style =filled];
-node0xc000094910[label="<f0>|<f1>  Seguridad y vigilancia: |<f2>",color=green,style =filled];
-node0xc0000f0b80[label="<f0>|<f1>5  Seguridad y vigilancia: |<f2>",color=green,style =filled];
-node0xc000094910->node0xc0000f0b80;
-node0xc0000f0b80->node0xc000094910;
-node0xc0000f0e80[label="<f0>|<f1>16  Seguridad y vigilancia: |<f2>",color=green,style =filled];
-node0xc0000f0b80->node0xc0000f0e80;
-node0xc0000f0e80->node0xc0000f0b80;
-{rank=same;node0xc0000f0e80;node0xc0000f0b80}
-node0xc0000f0700[label="<f0>|<f1>16  Seguridad y vigilancia: |<f2>",color=green,style =filled];
-node0xc0000f0e80->node0xc0000f0700;
-node0xc0000f0700->node0xc0000f0e80;
-{rank=same;node0xc0000f0700;node0xc0000f0e80}
-node0xc000094e60->node0xc0000f0b80;
-node0xc0000f0b80->node0xc000094e60;
-node0xc000094960->node0xc0000f0e80;
-node0xc0000f0e80->node0xc000094960;
-node0xc0000f0e80->node0xc0000f0700;
-node0xc0000f0700->node0xc0000f0e80;
-{rank=same;rankdir=LR;node0xc0000f0700;node0xc0000f0e80}
+node[shape="box"];
+nodeMt[ label = "Matriz", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc0000ac5a0[label="5",color=green,style =filled,width = 1.5 group=5];
+nodeMt->node0xc0000ac5a0[dir="both"];
+{rank=same;nodeMt;node0xc0000ac5a0;}
+node0xc0000acaa0[label="16",color=green,style =filled,width = 1.5 group=16];
+node0xc0000ac5a0->node0xc0000acaa0[dir="both"];
+{rank=same;node0xc0000ac5a0;node0xc0000acaa0;}
+node0xc0000ac550[label="Seguridad y vigilancia",color=green,style =filled width = 1.5 group=1];
+node0xc0000be680[label="",color=blue,style =filled, width = 0.5 group=5 shape=circle];
+node0xc0000ac550->node0xc0000be680[dir="both"];
+{rank=same;node0xc0000ac550;node0xc0000be680;}
+node0xc0000be980[label="",color=blue,style =filled, width = 0.5 group=16 shape=circle];
+node0xc0000be680->node0xc0000be980[dir="both"];
+{rank=same;node0xc0000be980;node0xc0000be680;}
+node0xc0000ac5a0->node0xc0000be680[dir="both"];
+node0xc0000acaa0->node0xc0000be980[dir="both"];
+nodeMt->node0xc0000ac550[dir="both"];
 }

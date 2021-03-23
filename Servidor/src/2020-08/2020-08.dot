@@ -1,11 +1,22 @@
 digraph G{
-node[shape="record"];
-rankdir=LR;
-node0xc000094870[label="<f0>|<f1>  31: |<f2>",color=green,style =filled];
-node0xc000094820[label="<f0>|<f1>  Television y video: |<f2>",color=green,style =filled];
-node0xc0000f0680[label="<f0>|<f1>31  Television y video: |<f2>",color=green,style =filled];
-node0xc000094820->node0xc0000f0680;
-node0xc0000f0680->node0xc000094820;
-node0xc000094870->node0xc0000f0680;
-node0xc0000f0680->node0xc000094870;
+node[shape="box"];
+nodeMt[ label = "Matriz", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc0000ac960[label="13",color=green,style =filled,width = 1.5 group=13];
+nodeMt->node0xc0000ac960[dir="both"];
+{rank=same;nodeMt;node0xc0000ac960;}
+node0xc0000aca00[label="31",color=green,style =filled,width = 1.5 group=31];
+node0xc0000ac960->node0xc0000aca00[dir="both"];
+{rank=same;node0xc0000ac960;node0xc0000aca00;}
+node0xc0000ac910[label="Television y video",color=green,style =filled width = 1.5 group=1];
+node0xc0000be880[label="",color=blue,style =filled, width = 0.5 group=13 shape=circle];
+node0xc0000ac910->node0xc0000be880[dir="both"];
+{rank=same;node0xc0000ac910;node0xc0000be880;}
+node0xc0000be900[label="",color=blue,style =filled, width = 0.5 group=31 shape=circle];
+node0xc0000be880->node0xc0000be900[dir="both"];
+{rank=same;node0xc0000be900;node0xc0000be880;}
+node0xc0000ac960->node0xc0000be880[dir="both"];
+node0xc0000aca00->node0xc0000be900[dir="both"];
+nodeMt->node0xc0000ac910[dir="both"];
 }

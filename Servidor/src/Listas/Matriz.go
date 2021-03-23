@@ -307,79 +307,142 @@ func (this *Matriz) Imprimir2() {
 	}
 }
 func(this *Matriz)Grafo(name string){
+	if this != nil{
 	var cadena strings.Builder
 	fmt.Fprintf(&cadena, "digraph G{\n")
-	fmt.Fprintf(&cadena, "node[shape=\"record\"];\n")
-	fmt.Fprintf(&cadena, "rankdir=LR;\n")
+	fmt.Fprintf(&cadena, "node[shape=\"box\"];\n")
+	fmt.Fprintf(&cadena, "nodeMt[ label = \""+name+"\", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];\n")
+	fmt.Fprintf(&cadena, "e0[ shape = point, width = 0 ];\n")
+	fmt.Fprintf(&cadena, "e1[ shape = point, width = 0 ];\n")
+
+	
+    
 	//
+	
 	var aux123 interface{} = this.CabH
-	for aux123 != nil {
-		
-		fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v  "+strconv.Itoa(aux123.(*NodoCabeceraHorizontal).Dia)+": %v|<f2>\",color=green,style =filled];\n",  &(*aux123.(*NodoCabeceraHorizontal)), "", "")
+	var tempaux123 interface{} = this.CabH
+	if aux123 != nil {
+		if aux123.(*NodoCabeceraHorizontal) != nil {
+			fmt.Fprintf(&cadena, "node%p[label=\""+strconv.Itoa(aux123.(*NodoCabeceraHorizontal).Dia)+"\",color=green,style =filled,width = 1.5 group="+strconv.Itoa(aux123.(*NodoCabeceraHorizontal).Dia)+"];\n",  &(*aux123.(*NodoCabeceraHorizontal)))
+		fmt.Fprintf(&cadena, "nodeMt->node%p[dir=\"both\"];\n",&(*aux123.(*NodoCabeceraHorizontal)))
+		fmt.Fprintf(&cadena, "{rank=same;nodeMt;node%p;}\n",&(*aux123.(*NodoCabeceraHorizontal)))
+		tempaux123 = aux123
 		aux123 = aux123.(*NodoCabeceraHorizontal).ESTE
+		}else{
+			tempaux123 = nil
+			aux123 = nil
+
+		}
+		
 	}
 	
-		//Imprimir Cabeceras Horizontales 
+	for aux123 != nil {
+		if aux123.(*NodoCabeceraHorizontal) != nil {
+		fmt.Fprintf(&cadena, "node%p[label=\""+strconv.Itoa(aux123.(*NodoCabeceraHorizontal).Dia)+"\",color=green,style =filled,width = 1.5 group="+strconv.Itoa(aux123.(*NodoCabeceraHorizontal).Dia)+"];\n",  &(*aux123.(*NodoCabeceraHorizontal)))
+		fmt.Fprintf(&cadena, "node%p->node%p[dir=\"both\"];\n",&(*tempaux123.(*NodoCabeceraHorizontal)),&(*aux123.(*NodoCabeceraHorizontal)))
+		fmt.Fprintf(&cadena, "{rank=same;node%p;node%p;}\n",&(*tempaux123.(*NodoCabeceraHorizontal)),&(*aux123.(*NodoCabeceraHorizontal)))
+		tempaux123 = aux123
+		aux123 = aux123.(*NodoCabeceraHorizontal).ESTE	
+		}else{
+			tempaux123 = nil
+			aux123 = nil
+		}
+		
+	}
+		//Imprimir Cabeceras Verticales
 
 	var aux interface{} = this.CabV
+	
 	for aux != nil {
-		fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v  "+aux.(*NodoCabeceraVertical).Departamento+": %v|<f2>\",color=green,style =filled];\n",  &(*aux.(*NodoCabeceraVertical)), "", "")
+		if aux.(*NodoCabeceraVertical) != nil{
+		fmt.Fprintf(&cadena, "node%p[label=\""+aux.(*NodoCabeceraVertical).Departamento+"\",color=green,style =filled width = 1.5 group=1];\n",  &(*aux.(*NodoCabeceraVertical)))
 		
 		tmp := aux.(*NodoCabeceraVertical).ESTE
 		tmp1 := aux.(*NodoCabeceraVertical).ESTE
 		if tmp != nil {
-			fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v  "+tmp.(*NodoPedido).Departamento+": %v|<f2>\",color=green,style =filled];\n",  &(*tmp.(*NodoPedido)), tmp.(*NodoPedido).Dia, "")
-			fmt.Fprintf(&cadena, "node%p->node%p;\n",  &(*aux.(*NodoCabeceraVertical)), &(*tmp.(*NodoPedido)))
-			fmt.Fprintf(&cadena, "node%p->node%p;\n", &(*tmp.(*NodoPedido)), &(*aux.(*NodoCabeceraVertical)))
+			fmt.Fprintf(&cadena, "node%p[label=\"\",color=blue,style =filled, width = 0.5 group="+strconv.Itoa(tmp.(*NodoPedido).Dia)+" shape=circle];\n", &(*tmp.(*NodoPedido)))
+			fmt.Fprintf(&cadena, "node%p->node%p[dir=\"both\"];\n",  &(*aux.(*NodoCabeceraVertical)), &(*tmp.(*NodoPedido)))
+			fmt.Fprintf(&cadena, "{rank=same;node%p;node%p;}\n",&(*aux.(*NodoCabeceraVertical)),&(*tmp.(*NodoPedido)))
+		
 			tmp1 = tmp
 			tmp = tmp.(*NodoPedido).ESTE
 		}
 		for tmp != nil {
-			fmt.Printf("%v,%v------", tmp.(*NodoPedido).Dia, tmp.(*NodoPedido).Departamento)
-			fmt.Fprintf(&cadena, "node%p[label=\"<f0>|<f1>%v  "+tmp.(*NodoPedido).Departamento+": %v|<f2>\",color=green,style =filled];\n",  &(*tmp.(*NodoPedido)), tmp.(*NodoPedido).Dia, "")
-			fmt.Fprintf(&cadena, "node%p->node%p;\n",  &(*tmp1.(*NodoPedido)), &(*tmp.(*NodoPedido)))
-			fmt.Fprintf(&cadena, "node%p->node%p;\n", &(*tmp.(*NodoPedido)), &(*tmp1.(*NodoPedido)))
-			fmt.Fprintf(&cadena, "{rank=same;node%p;node%p}\n", &(*tmp.(*NodoPedido)),&(*tmp1.(*NodoPedido)))
-			tmp1 = tmp
+			if tmp.(*NodoPedido).Dia == tmp1.(*NodoPedido).Dia && tmp.(*NodoPedido).Departamento ==tmp1.(*NodoPedido).Departamento{
+				
+			}else{
+				fmt.Printf("%v,%v------", tmp.(*NodoPedido).Dia, tmp.(*NodoPedido).Departamento)
+				fmt.Fprintf(&cadena, "node%p[label=\"\",color=blue,style =filled, width = 0.5 group="+strconv.Itoa(tmp.(*NodoPedido).Dia)+" shape=circle];\n",  &(*tmp.(*NodoPedido)))
+				fmt.Fprintf(&cadena, "node%p->node%p[dir=\"both\"];\n",  &(*tmp1.(*NodoPedido)), &(*tmp.(*NodoPedido)))
+				fmt.Fprintf(&cadena, "{rank=same;node%p;node%p;}\n", &(*tmp.(*NodoPedido)),&(*tmp1.(*NodoPedido)))
+				tmp1 = tmp
+			}
+			
 			tmp = tmp.(*NodoPedido).ESTE
 		}
 		fmt.Print("\n")
-		t:=aux
 		aux = aux.(*NodoCabeceraVertical).SUR
-		if aux != nil {
-			fmt.Fprintf(&cadena, "{rank=same;rankdir=LR;node%p;node%p}\n", &(*aux.(*NodoCabeceraVertical)),&(*t.(*NodoCabeceraVertical)))
-		}
 		
+	}else{
+		aux = nil
+	}
+	
 	}
 		
 	//Imprimir Cabecera Vertical
 	var aux12 interface{} = this.CabH
 	for aux12 != nil {
-		fmt.Print(aux12.(*NodoCabeceraHorizontal).Dia, "*****************")
+		if aux12.(*NodoCabeceraHorizontal) != nil {
+			
+		
 		tmp12 := aux12.(*NodoCabeceraHorizontal).SUR
 		tmp112 := aux12.(*NodoCabeceraHorizontal).SUR
 		if tmp12 != nil {
-			fmt.Fprintf(&cadena, "node%p->node%p;\n",  &(*aux12.(*NodoCabeceraHorizontal)), &(*tmp12.(*NodoPedido)))
-			fmt.Fprintf(&cadena, "node%p->node%p;\n", &(*tmp12.(*NodoPedido)), &(*aux12.(*NodoCabeceraHorizontal)))
+			fmt.Fprintf(&cadena, "node%p->node%p[dir=\"both\"];\n",  &(*aux12.(*NodoCabeceraHorizontal)), &(*tmp12.(*NodoPedido)))
 			tmp112 = tmp12
 			tmp12 = tmp12.(*NodoPedido).SUR
 		}
 		for tmp12 != nil {
-			fmt.Printf("%v,%v-------", tmp12.(*NodoPedido).Dia, tmp12.(*NodoPedido).Departamento)
-			fmt.Fprintf(&cadena, "node%p->node%p;\n",  &(*tmp112.(*NodoPedido)), &(*tmp12.(*NodoPedido)))
-			fmt.Fprintf(&cadena, "node%p->node%p;\n", &(*tmp12.(*NodoPedido)), &(*tmp112.(*NodoPedido)))
-			fmt.Fprintf(&cadena, "{rank=same;rankdir=LR;node%p;node%p}\n", &(*tmp12.(*NodoPedido)),&(*tmp112.(*NodoPedido)))
-			tmp112 = tmp12
+			if tmp12.(*NodoPedido).Dia == tmp112.(*NodoPedido).Dia && tmp12.(*NodoPedido).Departamento ==tmp112.(*NodoPedido).Departamento{
+				
+				}else{
+					fmt.Printf("%v,%v-------", tmp12.(*NodoPedido).Dia, tmp12.(*NodoPedido).Departamento)
+					fmt.Fprintf(&cadena, "node%p->node%p[dir=\"both\"];\n",  &(*tmp112.(*NodoPedido)), &(*tmp12.(*NodoPedido)))
+					tmp112 = tmp12
+				}
+			
 			tmp12 = tmp12.(*NodoPedido).SUR
 		}
 		fmt.Println("")
 		aux12 = aux12.(*NodoCabeceraHorizontal).ESTE
+	}else{
+		aux12 = nil
+	}
 	}
 	
+	var aux123ho interface{} = this.CabV
+	var tempaux123ho interface{} = this.CabV
+	if aux123ho != nil {
+		if aux123ho.(*NodoCabeceraVertical) != nil {
+			fmt.Fprintf(&cadena, "nodeMt->node%p[dir=\"both\"];\n",&(*aux123ho.(*NodoCabeceraVertical)))
+			tempaux123ho = aux123ho
+			aux123ho = aux123ho.(*NodoCabeceraVertical).SUR
+		}else{aux123ho = nil}
+		
+	}
+	
+	for aux123ho != nil {
+		if aux123ho.(*NodoCabeceraVertical) != nil {
+		fmt.Fprintf(&cadena, "node%p->node%p[dir=\"both\"];\n",&(*tempaux123ho.(*NodoCabeceraVertical)),&(*aux123ho.(*NodoCabeceraVertical)))
+		tempaux123ho = aux123ho
+		aux123ho = aux123ho.(*NodoCabeceraVertical).SUR
+		}else{aux123ho = nil}
+	}
 	fmt.Fprintf(&cadena, "}\n")
 	guardarArchivo(cadena.String(), name)
 		path, _ := exec.LookPath("dot")
 		cmd, _ := exec.Command(path, "-Tpng", "./"+name+"/"+name+".dot").Output()
 		mode := int(0777)
 		ioutil.WriteFile(name+"/"+name+".png", cmd, os.FileMode(mode))	
+	}
 }

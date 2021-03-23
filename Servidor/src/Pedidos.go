@@ -23,7 +23,16 @@ type Pedido struct{
 type Pedidos struct {
 	Pedido [50000]Pedido `json:"Pedidos"`
 }
-
+func Ingresar(w http.ResponseWriter, r *http.Request){
+	dispersa := &Listas.Matriz{nil, nil}
+	listProducto := Listas.NewList_Producto()
+	produc := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: 11, Tienda: "Samsung", Departamento:"Tecnologia",Calificacion:5,Productos:listProducto}
+	dispersa.Add(produc)
+	
+	dispersa.Imprimir()
+	dispersa.Imprimir2()
+	dispersa.Grafo("Prueba")
+}
 func Add_Pedido(w http.ResponseWriter, r *http.Request){
 	reqBody, err := ioutil.ReadAll(r.Body)
 	
@@ -71,19 +80,16 @@ func Add_Pedido(w http.ResponseWriter, r *http.Request){
 				if ExM.Mes == "" {
 					ExM1 := &Listas.Node_Month{CadenaMonth,&Listas.Matriz{nil, nil},nil,nil}
 					ExA.Months.Add_Month(ExM1)
-					fmt.Println("Agregando Mes: "+CadenaMonth)
 					
 				}
+				ExM = ExA.Months.Existe_Month(CadenaMonth)
 				CadeDay, err800 := strconv.Atoi(CadenaDay)
 				if err800 != nil {
 					fmt.Fprintf(w, "Error al convertir el dia")
 				}
-				if ExM.Matriz_Dispersa == nil {
-					ExM.Matriz_Dispersa = &Listas.Matriz{nil, nil}
-				}
+				
 				produc := &Listas.NodoPedido{ESTE: nil, OESTE: nil, SUR: nil, NORTE: nil, Dia: CadeDay, Tienda: prod.Pedido[i].Tienda, Departamento:prod.Pedido[i].Departamento,Calificacion:prod.Pedido[i].Calificacion,Productos:listProducto}
 				ExM.Matriz_Dispersa.Add(produc)
-				fmt.Println("Agregando Dia: "+CadenaDay)
 
 
 

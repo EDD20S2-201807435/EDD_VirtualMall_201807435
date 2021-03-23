@@ -84,6 +84,7 @@ func (this *List_Month) Add_Month(new *Node_Month) Node_Month {
 	}
 	return *this.frist
 }
+
 func (this *Node_Year) To_string_Year() Node_Year {
 	return *this
 }
@@ -99,7 +100,20 @@ func Existe_Year(Year string) Node_Year {
 	yy :=Node_Year{"",nil,nil,nil}
 	return yy
 }
+func Update_Year(Year string,new *Node_Year) Node_Year {
+	aux := Listado_Years.frist
+	for aux != nil {
+		tmp := aux.To_string_Year()
+		if tmp.Year == Year{
+			tmp.Months = new.Months
 
+			return tmp
+		}
+		aux = aux.Next
+	}
+	yy :=Node_Year{"",nil,nil,nil}
+	return yy
+}
 func (this *Node_Month) To_string_Month() Node_Month {
 	return *this
 }
@@ -114,12 +128,39 @@ func (this List_Month) Existe_Month(Mes string) Node_Month {
 	}
 	return Node_Month{"",nil,nil,nil}
 }
-
+func (this List_Month) Update_Month(Mes string, new *Node_Month) Node_Month {
+	aux := this.frist
+	for aux != nil {
+		tmp := aux.To_string_Month()
+		if tmp.Mes == Mes{
+			tmp.Matriz_Dispersa = new.Matriz_Dispersa
+			return tmp
+		}
+		aux = aux.Next
+	}
+	return Node_Month{"",nil,nil,nil}
+}
+func (this List_Month) Add_Matriz(Mes string,Pedi *NodoPedido) Node_Month {
+	aux := this.frist
+	for aux != nil {
+		tmp := aux.To_string_Month()
+		if tmp.Mes == Mes{
+			if tmp.Matriz_Dispersa == nil {
+				tmp.Matriz_Dispersa = &Matriz{nil, nil}
+			}
+			tmp.Matriz_Dispersa.Add(Pedi)
+		
+			return tmp
+		}
+		aux = aux.Next
+	}
+	return Node_Month{"",nil,nil,nil}
+}
 func Calendario() Node_Year {
 	aux := Listado_Years.frist
 	for aux != nil {
 		tmp := aux.To_string_Year()
-		fmt.Println(""+tmp.Year)
+		fmt.Println("Año de creacion "+tmp.Year)
 
 		//Meses
 		this := tmp.Months

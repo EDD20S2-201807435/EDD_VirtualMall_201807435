@@ -1,12 +1,12 @@
 digraph G{
 node[shape="record"];
-node0xc0048a4780[label="<f0>|<f1>298  Práctica Fresco Zapatos: 289|<f2>",color=green,style =filled];
-node0xc0048a46c0[label="<f0>|<f1>296 Sin marca Caucho Ensalada: 436|<f2>",color=green,style =filled];
-node0xc0048a4780:f0->node0xc0048a46c0:f1
-node0xc0048a4840[label="<f0>|<f1>295 Práctica Granito Embutidos: 391|<f2>",color=green,style =filled];
-node0xc0048a46c0:f0->node0xc0048a4840:f1
-node0xc0048a47e0[label="<f0>|<f1>297 Sin marca Plástico Tuna: 472|<f2>",color=green,style =filled];
-node0xc0048a46c0:f2->node0xc0048a47e0:f1
-node0xc0048a4720[label="<f0>|<f1>299 Genérica Metal Mesa: 111|<f2>",color=green,style =filled];
-node0xc0048a4780:f2->node0xc0048a4720:f1
+node0xc00004ec60[label="<f0>|<f1>298  Práctica Fresco Zapatos: 289|<f2>",color=green,style =filled];
+node0xc00004eba0[label="<f0>|<f1>296 Sin marca Caucho Ensalada: 436|<f2>",color=green,style =filled];
+node0xc00004ec60:f0->node0xc00004eba0:f1
+node0xc00004ed20[label="<f0>|<f1>295 Práctica Granito Embutidos: 391|<f2>",color=green,style =filled];
+node0xc00004eba0:f0->node0xc00004ed20:f1
+node0xc00004ecc0[label="<f0>|<f1>297 Sin marca Plástico Tuna: 472|<f2>",color=green,style =filled];
+node0xc00004eba0:f2->node0xc00004ecc0:f1
+node0xc00004ec00[label="<f0>|<f1>299 Genérica Metal Mesa: 111|<f2>",color=green,style =filled];
+node0xc00004ec60:f2->node0xc00004ec00:f1
 }

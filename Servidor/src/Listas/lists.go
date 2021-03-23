@@ -316,16 +316,20 @@ func graficar(count int, s *strings.Builder, actual int, repetidor int) {
 }
 
 func guardarArchivo(cadena string, name string) {
-	err34 := os.RemoveAll(name)
-	if err34 != nil {
-		fmt.Printf("Error eliminando carpeta con contenido: %v\n", err34)
-	  } else {
-		fmt.Println("Eliminada correctamente")
-	}
-	err1 := os.Mkdir(name, 0777)
-	if err1 != nil {
-		panic(err1)
-	}
+	
+	
+	if _, err55 := os.Stat("./"+name); err55 != nil { if os.IsNotExist(err55) {
+		err34 := os.RemoveAll("./"+name)
+		if err34 != nil {
+			fmt.Printf("Error eliminando carpeta con contenido: %v\n", err34)
+		  } else {
+			fmt.Println("Eliminada correctamente")
+		}
+		 } else { // other error 
+			} 
+		}
+		os.Mkdir(name, os.ModeDir)
+
 	f, err := os.Create(name + "/" + name + ".dot")
 	if err != nil {
 		fmt.Println(err)
