@@ -215,9 +215,8 @@ func main() {
     router.HandleFunc("/a",Add_Producto).Methods("POST")
 	router.HandleFunc("/gete", Add_Pedido).Methods("POST")
 	router.HandleFunc("/nem", Ingresar).Methods("GET")
+	router.HandleFunc("/crear", CrearJson)
 	
-	s := New()
 	log.Fatal(http.ListenAndServe(":3000", router))
-	log.Fatal(http.ListenAndServe(":3030", s.Router()))
 
 }
