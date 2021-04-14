@@ -1,0 +1,46 @@
+digraph G{
+node[shape="record"];
+node0xc000cef620[label="<f0>|<f1>630  Sabrosa Cotton Mesa: 334|<f2>",color=green,style =filled];
+node0xc000cef680[label="<f0>|<f1>623 Inteligente Caucho Embutidos: 15|<f2>",color=green,style =filled];
+node0xc000cef620:f0->node0xc000cef680:f1
+node0xc000cefe00[label="<f0>|<f1>621 Rústico Metal Computadora: 224|<f2>",color=green,style =filled];
+node0xc000cef680:f0->node0xc000cefe00:f1
+node0xc000cef800[label="<f0>|<f1>620 Inteligente Acero Ensalada: 376|<f2>",color=green,style =filled];
+node0xc000cefe00:f0->node0xc000cef800:f1
+node0xc000cef740[label="<f0>|<f1>622 Inteligente Plástico Bike: 456|<f2>",color=green,style =filled];
+node0xc000cefe00:f2->node0xc000cef740:f1
+node0xc000cefd40[label="<f0>|<f1>626 Refinado Metal Ratón: 377|<f2>",color=green,style =filled];
+node0xc000cef680:f2->node0xc000cefd40:f1
+node0xc000cef7a0[label="<f0>|<f1>624 Sabrosa Frozen Embutidos: 347|<f2>",color=green,style =filled];
+node0xc000cefd40:f0->node0xc000cef7a0:f1
+node0xc000cefda0[label="<f0>|<f1>625 Inteligente Caucho Computadora: 391|<f2>",color=green,style =filled];
+node0xc000cef7a0:f2->node0xc000cefda0:f1
+node0xc000cef9e0[label="<f0>|<f1>628 Práctica Madera Camisa: 267|<f2>",color=green,style =filled];
+node0xc000cefd40:f2->node0xc000cef9e0:f1
+node0xc000cefb00[label="<f0>|<f1>627 Inteligente Cotton Zapatos: 409|<f2>",color=green,style =filled];
+node0xc000cef9e0:f0->node0xc000cefb00:f1
+node0xc000cef920[label="<f0>|<f1>629 Artesanal Acero Jabón: 479|<f2>",color=green,style =filled];
+node0xc000cef9e0:f2->node0xc000cef920:f1
+node0xc000cefa40[label="<f0>|<f1>634 Fantástico Soft Auto: 471|<f2>",color=green,style =filled];
+node0xc000cef620:f2->node0xc000cefa40:f1
+node0xc000cefc80[label="<f0>|<f1>632 Inteligente Madera Queso: 15|<f2>",color=green,style =filled];
+node0xc000cefa40:f0->node0xc000cefc80:f1
+node0xc000cef980[label="<f0>|<f1>631 Licencia Frozen Computadora: 493|<f2>",color=green,style =filled];
+node0xc000cefc80:f0->node0xc000cef980:f1
+node0xc000cefaa0[label="<f0>|<f1>633 Inteligente Madera Camisa: 111|<f2>",color=green,style =filled];
+node0xc000cefc80:f2->node0xc000cefaa0:f1
+node0xc000cef6e0[label="<f0>|<f1>638 Pequeño Hormigón Pantalones: 471|<f2>",color=green,style =filled];
+node0xc000cefa40:f2->node0xc000cef6e0:f1
+node0xc000cef860[label="<f0>|<f1>636 Ergonómico Madera Guantes: 6|<f2>",color=green,style =filled];
+node0xc000cef6e0:f0->node0xc000cef860:f1
+node0xc000cefb60[label="<f0>|<f1>635 Fantástico Plástico Pantalones: 130|<f2>",color=green,style =filled];
+node0xc000cef860:f0->node0xc000cefb60:f1
+node0xc000cefbc0[label="<f0>|<f1>637 Rústico Granito Pizza: 63|<f2>",color=green,style =filled];
+node0xc000cef860:f2->node0xc000cefbc0:f1
+node0xc000cef8c0[label="<f0>|<f1>640 Genérica Caucho Embutidos: 267|<f2>",color=green,style =filled];
+node0xc000cef6e0:f2->node0xc000cef8c0:f1
+node0xc000cefce0[label="<f0>|<f1>639 Licencia Plástico Zapatos: 138|<f2>",color=green,style =filled];
+node0xc000cef8c0:f0->node0xc000cefce0:f1
+node0xc000cefc20[label="<f0>|<f1>641 Licencia Frozen Toallas: 329|<f2>",color=green,style =filled];
+node0xc000cef8c0:f2->node0xc000cefc20:f1
+}

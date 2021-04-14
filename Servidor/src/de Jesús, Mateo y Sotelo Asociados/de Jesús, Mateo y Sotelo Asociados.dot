@@ -1,0 +1,12 @@
+digraph G{
+node[shape="record"];
+node0xc0013fe060[label="<f0>|<f1>524  Práctica Fresco Pelota: 285|<f2>",color=green,style =filled];
+node0xc0013fe000[label="<f0>|<f1>523 Práctica Hormigón Zapatos: 407|<f2>",color=green,style =filled];
+node0xc0013fe060:f0->node0xc0013fe000:f1
+node0xc0013fe0c0[label="<f0>|<f1>522 Elegante Metal Pescado: 28|<f2>",color=green,style =filled];
+node0xc0013fe000:f0->node0xc0013fe0c0:f1
+node0xc0046f3f80[label="<f0>|<f1>525 Hecho a mano Frozen Zapatos: 103|<f2>",color=green,style =filled];
+node0xc0013fe060:f2->node0xc0046f3f80:f1
+node0xc0013fe120[label="<f0>|<f1>526 Fantástico Hormigón Sombrero: 319|<f2>",color=green,style =filled];
+node0xc0046f3f80:f2->node0xc0013fe120:f1
+}

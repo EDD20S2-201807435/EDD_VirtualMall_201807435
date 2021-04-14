@@ -1,0 +1,72 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "2003-02", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc002063e50[label="1",color=green,style =filled,width = 1.5 group=1];
+nodeMt->node0xc002063e50[dir="both"];
+{rank=same;nodeMt;node0xc002063e50;}
+node0xc001e47090[label="2",color=green,style =filled,width = 1.5 group=2];
+node0xc002063e50->node0xc001e47090[dir="both"];
+{rank=same;node0xc002063e50;node0xc001e47090;}
+node0xc0022aaeb0[label="4",color=green,style =filled,width = 1.5 group=4];
+node0xc001e47090->node0xc0022aaeb0[dir="both"];
+{rank=same;node0xc001e47090;node0xc0022aaeb0;}
+node0xc00208ab90[label="8",color=green,style =filled,width = 1.5 group=8];
+node0xc0022aaeb0->node0xc00208ab90[dir="both"];
+{rank=same;node0xc0022aaeb0;node0xc00208ab90;}
+node0xc00208aa50[label="10",color=green,style =filled,width = 1.5 group=10];
+node0xc00208ab90->node0xc00208aa50[dir="both"];
+{rank=same;node0xc00208ab90;node0xc00208aa50;}
+node0xc001fa39f0[label="11",color=green,style =filled,width = 1.5 group=11];
+node0xc00208aa50->node0xc001fa39f0[dir="both"];
+{rank=same;node0xc00208aa50;node0xc001fa39f0;}
+node0xc001f5d8b0[label="18",color=green,style =filled,width = 1.5 group=18];
+node0xc001fa39f0->node0xc001f5d8b0[dir="both"];
+{rank=same;node0xc001fa39f0;node0xc001f5d8b0;}
+node0xc001fc3400[label="25",color=green,style =filled,width = 1.5 group=25];
+node0xc001f5d8b0->node0xc001fc3400[dir="both"];
+{rank=same;node0xc001f5d8b0;node0xc001fc3400;}
+node0xc001e47040[label="Arte y Artesanias",color=green,style =filled width = 1.5 group=1];
+node0xc001e44b80[label="",color=blue,style =filled, width = 0.5 group=2 shape=circle];
+node0xc001e47040->node0xc001e44b80[dir="both"];
+{rank=same;node0xc001e47040;node0xc001e44b80;}
+node0xc001f99a00[label="",color=blue,style =filled, width = 0.5 group=11 shape=circle];
+node0xc001e44b80->node0xc001f99a00[dir="both"];
+{rank=same;node0xc001f99a00;node0xc001e44b80;}
+node0xc002063e00[label="Audífonos",color=green,style =filled width = 1.5 group=1];
+node0xc002064e00[label="",color=blue,style =filled, width = 0.5 group=1 shape=circle];
+node0xc002063e00->node0xc002064e00[dir="both"];
+{rank=same;node0xc002063e00;node0xc002064e00;}
+node0xc00208c800[label="",color=blue,style =filled, width = 0.5 group=8 shape=circle];
+node0xc002064e00->node0xc00208c800[dir="both"];
+{rank=same;node0xc00208c800;node0xc002064e00;}
+node0xc001f5d860[label="Kindles",color=green,style =filled width = 1.5 group=1];
+node0xc00208c700[label="",color=blue,style =filled, width = 0.5 group=10 shape=circle];
+node0xc001f5d860->node0xc00208c700[dir="both"];
+{rank=same;node0xc001f5d860;node0xc00208c700;}
+node0xc001f5b180[label="",color=blue,style =filled, width = 0.5 group=18 shape=circle];
+node0xc00208c700->node0xc001f5b180[dir="both"];
+{rank=same;node0xc001f5b180;node0xc00208c700;}
+node0xc0022aae60[label="Musica Digital",color=green,style =filled width = 1.5 group=1];
+node0xc0022b0200[label="",color=blue,style =filled, width = 0.5 group=4 shape=circle];
+node0xc0022aae60->node0xc0022b0200[dir="both"];
+{rank=same;node0xc0022aae60;node0xc0022b0200;}
+node0xc001fc33b0[label="Smart Home",color=green,style =filled width = 1.5 group=1];
+node0xc001fc6200[label="",color=blue,style =filled, width = 0.5 group=25 shape=circle];
+node0xc001fc33b0->node0xc001fc6200[dir="both"];
+{rank=same;node0xc001fc33b0;node0xc001fc6200;}
+node0xc002063e50->node0xc002064e00[dir="both"];
+node0xc001e47090->node0xc001e44b80[dir="both"];
+node0xc0022aaeb0->node0xc0022b0200[dir="both"];
+node0xc00208ab90->node0xc00208c800[dir="both"];
+node0xc00208aa50->node0xc00208c700[dir="both"];
+node0xc001fa39f0->node0xc001f99a00[dir="both"];
+node0xc001f5d8b0->node0xc001f5b180[dir="both"];
+node0xc001fc3400->node0xc001fc6200[dir="both"];
+nodeMt->node0xc001e47040[dir="both"];
+node0xc001e47040->node0xc002063e00[dir="both"];
+node0xc002063e00->node0xc001f5d860[dir="both"];
+node0xc001f5d860->node0xc0022aae60[dir="both"];
+node0xc0022aae60->node0xc001fc33b0[dir="both"];
+}

@@ -1,0 +1,77 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "2011-03", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc00217b450[label="7",color=green,style =filled,width = 1.5 group=7];
+nodeMt->node0xc00217b450[dir="both"];
+{rank=same;nodeMt;node0xc00217b450;}
+node0xc001f3e3c0[label="8",color=green,style =filled,width = 1.5 group=8];
+node0xc00217b450->node0xc001f3e3c0[dir="both"];
+{rank=same;node0xc00217b450;node0xc001f3e3c0;}
+node0xc00200f270[label="13",color=green,style =filled,width = 1.5 group=13];
+node0xc001f3e3c0->node0xc00200f270[dir="both"];
+{rank=same;node0xc001f3e3c0;node0xc00200f270;}
+node0xc0000539f0[label="18",color=green,style =filled,width = 1.5 group=18];
+node0xc00200f270->node0xc0000539f0[dir="both"];
+{rank=same;node0xc00200f270;node0xc0000539f0;}
+node0xc001ec09b0[label="20",color=green,style =filled,width = 1.5 group=20];
+node0xc0000539f0->node0xc001ec09b0[dir="both"];
+{rank=same;node0xc0000539f0;node0xc001ec09b0;}
+node0xc00216aaf0[label="24",color=green,style =filled,width = 1.5 group=24];
+node0xc001ec09b0->node0xc00216aaf0[dir="both"];
+{rank=same;node0xc001ec09b0;node0xc00216aaf0;}
+node0xc001efa910[label="27",color=green,style =filled,width = 1.5 group=27];
+node0xc00216aaf0->node0xc001efa910[dir="both"];
+{rank=same;node0xc00216aaf0;node0xc001efa910;}
+node0xc001f3e370[label="Arte y Artesanias",color=green,style =filled width = 1.5 group=1];
+node0xc002184b00[label="",color=blue,style =filled, width = 0.5 group=7 shape=circle];
+node0xc001f3e370->node0xc002184b00[dir="both"];
+{rank=same;node0xc001f3e370;node0xc002184b00;}
+node0xc001f29c80[label="",color=blue,style =filled, width = 0.5 group=8 shape=circle];
+node0xc002184b00->node0xc001f29c80[dir="both"];
+{rank=same;node0xc001f29c80;node0xc002184b00;}
+node0xc0022b0f00[label="",color=blue,style =filled, width = 0.5 group=18 shape=circle];
+node0xc001f29c80->node0xc0022b0f00[dir="both"];
+{rank=same;node0xc0022b0f00;node0xc001f29c80;}
+node0xc00200f220[label="Audífonos",color=green,style =filled width = 1.5 group=1];
+node0xc00200d400[label="",color=blue,style =filled, width = 0.5 group=13 shape=circle];
+node0xc00200f220->node0xc00200d400[dir="both"];
+{rank=same;node0xc00200f220;node0xc00200d400;}
+node0xc0022cc640[label="Kindles",color=green,style =filled width = 1.5 group=1];
+node0xc0022c7380[label="",color=blue,style =filled, width = 0.5 group=8 shape=circle];
+node0xc0022cc640->node0xc0022c7380[dir="both"];
+{rank=same;node0xc0022cc640;node0xc0022c7380;}
+node0xc001ec0960[label="Musica Digital",color=green,style =filled width = 1.5 group=1];
+node0xc002305200[label="",color=blue,style =filled, width = 0.5 group=13 shape=circle];
+node0xc001ec0960->node0xc002305200[dir="both"];
+{rank=same;node0xc001ec0960;node0xc002305200;}
+node0xc001ebcc80[label="",color=blue,style =filled, width = 0.5 group=20 shape=circle];
+node0xc002305200->node0xc001ebcc80[dir="both"];
+{rank=same;node0xc001ebcc80;node0xc002305200;}
+node0xc001ee3900[label="",color=blue,style =filled, width = 0.5 group=27 shape=circle];
+node0xc001ebcc80->node0xc001ee3900[dir="both"];
+{rank=same;node0xc001ee3900;node0xc001ebcc80;}
+node0xc0000539a0[label="Smart Home",color=green,style =filled width = 1.5 group=1];
+node0xc00021bd00[label="",color=blue,style =filled, width = 0.5 group=18 shape=circle];
+node0xc0000539a0->node0xc00021bd00[dir="both"];
+{rank=same;node0xc0000539a0;node0xc00021bd00;}
+node0xc00216c800[label="",color=blue,style =filled, width = 0.5 group=24 shape=circle];
+node0xc00021bd00->node0xc00216c800[dir="both"];
+{rank=same;node0xc00216c800;node0xc00021bd00;}
+node0xc00217b450->node0xc002184b00[dir="both"];
+node0xc001f3e3c0->node0xc001f29c80[dir="both"];
+node0xc001f29c80->node0xc0022c7380[dir="both"];
+node0xc00200f270->node0xc00200d400[dir="both"];
+node0xc00200d400->node0xc002305200[dir="both"];
+node0xc0000539f0->node0xc0022b0f00[dir="both"];
+node0xc0022b0f00->node0xc00021bd00[dir="both"];
+node0xc001ec09b0->node0xc001ebcc80[dir="both"];
+node0xc00216aaf0->node0xc00216c800[dir="both"];
+node0xc001efa910->node0xc001ee3900[dir="both"];
+nodeMt->node0xc001f3e370[dir="both"];
+node0xc001f3e370->node0xc00200f220[dir="both"];
+node0xc00200f220->node0xc0022cc640[dir="both"];
+node0xc0022cc640->node0xc001ec0960[dir="both"];
+node0xc001ec0960->node0xc0000539a0[dir="both"];
+}

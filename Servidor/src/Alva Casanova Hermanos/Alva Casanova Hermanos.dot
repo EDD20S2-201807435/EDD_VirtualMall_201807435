@@ -1,0 +1,8 @@
+digraph G{
+node[shape="record"];
+node0xc0001c5620[label="<f0>|<f1>599  Elegante Hormigón Mesa: 338|<f2>",color=green,style =filled];
+node0xc0001c55c0[label="<f0>|<f1>598 Sabrosa Metal Teclado: 62|<f2>",color=green,style =filled];
+node0xc0001c5620:f0->node0xc0001c55c0:f1
+node0xc0001c5680[label="<f0>|<f1>600 Increíble Fresco Mesa: 413|<f2>",color=green,style =filled];
+node0xc0001c5620:f2->node0xc0001c5680:f1
+}

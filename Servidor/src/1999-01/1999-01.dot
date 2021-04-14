@@ -1,0 +1,90 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "1999-01", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc00225d4a0[label="1",color=green,style =filled,width = 1.5 group=1];
+nodeMt->node0xc00225d4a0[dir="both"];
+{rank=same;nodeMt;node0xc00225d4a0;}
+node0xc001fdf040[label="7",color=green,style =filled,width = 1.5 group=7];
+node0xc00225d4a0->node0xc001fdf040[dir="both"];
+{rank=same;node0xc00225d4a0;node0xc001fdf040;}
+node0xc002238a50[label="10",color=green,style =filled,width = 1.5 group=10];
+node0xc001fdf040->node0xc002238a50[dir="both"];
+{rank=same;node0xc001fdf040;node0xc002238a50;}
+node0xc001e2ccd0[label="13",color=green,style =filled,width = 1.5 group=13];
+node0xc002238a50->node0xc001e2ccd0[dir="both"];
+{rank=same;node0xc002238a50;node0xc001e2ccd0;}
+node0xc001f23950[label="20",color=green,style =filled,width = 1.5 group=20];
+node0xc001e2ccd0->node0xc001f23950[dir="both"];
+{rank=same;node0xc001e2ccd0;node0xc001f23950;}
+node0xc0022386e0[label="21",color=green,style =filled,width = 1.5 group=21];
+node0xc001f23950->node0xc0022386e0[dir="both"];
+{rank=same;node0xc001f23950;node0xc0022386e0;}
+node0xc001f23220[label="22",color=green,style =filled,width = 1.5 group=22];
+node0xc0022386e0->node0xc001f23220[dir="both"];
+{rank=same;node0xc0022386e0;node0xc001f23220;}
+node0xc001f93ea0[label="23",color=green,style =filled,width = 1.5 group=23];
+node0xc001f23220->node0xc001f93ea0[dir="both"];
+{rank=same;node0xc001f23220;node0xc001f93ea0;}
+node0xc002238af0[label="24",color=green,style =filled,width = 1.5 group=24];
+node0xc001f93ea0->node0xc002238af0[dir="both"];
+{rank=same;node0xc001f93ea0;node0xc002238af0;}
+node0xc00208a050[label="30",color=green,style =filled,width = 1.5 group=30];
+node0xc002238af0->node0xc00208a050[dir="both"];
+{rank=same;node0xc002238af0;node0xc00208a050;}
+node0xc001f231d0[label="Audífonos",color=green,style =filled width = 1.5 group=1];
+node0xc001fdcd80[label="",color=blue,style =filled, width = 0.5 group=7 shape=circle];
+node0xc001f231d0->node0xc001fdcd80[dir="both"];
+{rank=same;node0xc001f231d0;node0xc001fdcd80;}
+node0xc002233480[label="",color=blue,style =filled, width = 0.5 group=21 shape=circle];
+node0xc001fdcd80->node0xc002233480[dir="both"];
+{rank=same;node0xc002233480;node0xc001fdcd80;}
+node0xc001f13b80[label="",color=blue,style =filled, width = 0.5 group=22 shape=circle];
+node0xc002233480->node0xc001f13b80[dir="both"];
+{rank=same;node0xc001f13b80;node0xc002233480;}
+node0xc002114d80[label="",color=blue,style =filled, width = 0.5 group=30 shape=circle];
+node0xc001f13b80->node0xc002114d80[dir="both"];
+{rank=same;node0xc002114d80;node0xc001f13b80;}
+node0xc001e2cc80[label="Kindles",color=green,style =filled width = 1.5 group=1];
+node0xc002259700[label="",color=blue,style =filled, width = 0.5 group=1 shape=circle];
+node0xc001e2cc80->node0xc002259700[dir="both"];
+{rank=same;node0xc001e2cc80;node0xc002259700;}
+node0xc002233780[label="",color=blue,style =filled, width = 0.5 group=10 shape=circle];
+node0xc002259700->node0xc002233780[dir="both"];
+{rank=same;node0xc002233780;node0xc002259700;}
+node0xc001e2a700[label="",color=blue,style =filled, width = 0.5 group=13 shape=circle];
+node0xc002233780->node0xc001e2a700[dir="both"];
+{rank=same;node0xc001e2a700;node0xc002233780;}
+node0xc001f28000[label="",color=blue,style =filled, width = 0.5 group=20 shape=circle];
+node0xc001e2a700->node0xc001f28000[dir="both"];
+{rank=same;node0xc001f28000;node0xc001e2a700;}
+node0xc001f98800[label="",color=blue,style =filled, width = 0.5 group=23 shape=circle];
+node0xc001f28000->node0xc001f98800[dir="both"];
+{rank=same;node0xc001f98800;node0xc001f28000;}
+node0xc002233800[label="",color=blue,style =filled, width = 0.5 group=24 shape=circle];
+node0xc001f98800->node0xc002233800[dir="both"];
+{rank=same;node0xc002233800;node0xc001f98800;}
+node0xc00207bf00[label="",color=blue,style =filled, width = 0.5 group=30 shape=circle];
+node0xc002233800->node0xc00207bf00[dir="both"];
+{rank=same;node0xc00207bf00;node0xc002233800;}
+node0xc001e54a50[label="Musica Digital",color=green,style =filled width = 1.5 group=1];
+node0xc001e45980[label="",color=blue,style =filled, width = 0.5 group=13 shape=circle];
+node0xc001e54a50->node0xc001e45980[dir="both"];
+{rank=same;node0xc001e54a50;node0xc001e45980;}
+node0xc00225d4a0->node0xc002259700[dir="both"];
+node0xc001fdf040->node0xc001fdcd80[dir="both"];
+node0xc002238a50->node0xc002233780[dir="both"];
+node0xc001e2ccd0->node0xc001e2a700[dir="both"];
+node0xc001e2a700->node0xc001e45980[dir="both"];
+node0xc001f23950->node0xc001f28000[dir="both"];
+node0xc0022386e0->node0xc002233480[dir="both"];
+node0xc001f23220->node0xc001f13b80[dir="both"];
+node0xc001f93ea0->node0xc001f98800[dir="both"];
+node0xc002238af0->node0xc002233800[dir="both"];
+node0xc00208a050->node0xc002114d80[dir="both"];
+node0xc002114d80->node0xc00207bf00[dir="both"];
+nodeMt->node0xc001f231d0[dir="both"];
+node0xc001f231d0->node0xc001e2cc80[dir="both"];
+node0xc001e2cc80->node0xc001e54a50[dir="both"];
+}

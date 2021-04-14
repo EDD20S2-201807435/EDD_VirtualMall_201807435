@@ -1,0 +1,94 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "2013-11", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc002222230[label="1",color=green,style =filled,width = 1.5 group=1];
+nodeMt->node0xc002222230[dir="both"];
+{rank=same;nodeMt;node0xc002222230;}
+node0xc001ec0050[label="3",color=green,style =filled,width = 1.5 group=3];
+node0xc002222230->node0xc001ec0050[dir="both"];
+{rank=same;node0xc002222230;node0xc001ec0050;}
+node0xc002272690[label="7",color=green,style =filled,width = 1.5 group=7];
+node0xc001ec0050->node0xc002272690[dir="both"];
+{rank=same;node0xc001ec0050;node0xc002272690;}
+node0xc002285c70[label="11",color=green,style =filled,width = 1.5 group=11];
+node0xc002272690->node0xc002285c70[dir="both"];
+{rank=same;node0xc002272690;node0xc002285c70;}
+node0xc0020d5630[label="12",color=green,style =filled,width = 1.5 group=12];
+node0xc002285c70->node0xc0020d5630[dir="both"];
+{rank=same;node0xc002285c70;node0xc0020d5630;}
+node0xc0022e4140[label="14",color=green,style =filled,width = 1.5 group=14];
+node0xc0020d5630->node0xc0022e4140[dir="both"];
+{rank=same;node0xc0020d5630;node0xc0022e4140;}
+node0xc0021255e0[label="20",color=green,style =filled,width = 1.5 group=20];
+node0xc0022e4140->node0xc0021255e0[dir="both"];
+{rank=same;node0xc0022e4140;node0xc0021255e0;}
+node0xc001f5d400[label="21",color=green,style =filled,width = 1.5 group=21];
+node0xc0021255e0->node0xc001f5d400[dir="both"];
+{rank=same;node0xc0021255e0;node0xc001f5d400;}
+node0xc001fc27d0[label="23",color=green,style =filled,width = 1.5 group=23];
+node0xc001f5d400->node0xc001fc27d0[dir="both"];
+{rank=same;node0xc001f5d400;node0xc001fc27d0;}
+node0xc0020bf860[label="25",color=green,style =filled,width = 1.5 group=25];
+node0xc001fc27d0->node0xc0020bf860[dir="both"];
+{rank=same;node0xc001fc27d0;node0xc0020bf860;}
+node0xc002063680[label="Arte y Artesanias",color=green,style =filled width = 1.5 group=1];
+node0xc0020d9000[label="",color=blue,style =filled, width = 0.5 group=12 shape=circle];
+node0xc002063680->node0xc0020d9000[dir="both"];
+{rank=same;node0xc002063680;node0xc0020d9000;}
+node0xc002064880[label="",color=blue,style =filled, width = 0.5 group=23 shape=circle];
+node0xc0020d9000->node0xc002064880[dir="both"];
+{rank=same;node0xc002064880;node0xc0020d9000;}
+node0xc0022221e0[label="Audífonos",color=green,style =filled width = 1.5 group=1];
+node0xc002219400[label="",color=blue,style =filled, width = 0.5 group=1 shape=circle];
+node0xc0022221e0->node0xc002219400[dir="both"];
+{rank=same;node0xc0022221e0;node0xc002219400;}
+node0xc0020bf810[label="Kindles",color=green,style =filled width = 1.5 group=1];
+node0xc002270700[label="",color=blue,style =filled, width = 0.5 group=7 shape=circle];
+node0xc0020bf810->node0xc002270700[dir="both"];
+{rank=same;node0xc0020bf810;node0xc002270700;}
+node0xc002287700[label="",color=blue,style =filled, width = 0.5 group=11 shape=circle];
+node0xc002270700->node0xc002287700[dir="both"];
+{rank=same;node0xc002287700;node0xc002270700;}
+node0xc0022f1400[label="",color=blue,style =filled, width = 0.5 group=12 shape=circle];
+node0xc002287700->node0xc0022f1400[dir="both"];
+{rank=same;node0xc0022f1400;node0xc002287700;}
+node0xc0022dcc00[label="",color=blue,style =filled, width = 0.5 group=14 shape=circle];
+node0xc0022f1400->node0xc0022dcc00[dir="both"];
+{rank=same;node0xc0022dcc00;node0xc0022f1400;}
+node0xc00212ac00[label="",color=blue,style =filled, width = 0.5 group=20 shape=circle];
+node0xc0022dcc00->node0xc00212ac00[dir="both"];
+{rank=same;node0xc00212ac00;node0xc0022dcc00;}
+node0xc0020bd800[label="",color=blue,style =filled, width = 0.5 group=25 shape=circle];
+node0xc00212ac00->node0xc0020bd800[dir="both"];
+{rank=same;node0xc0020bd800;node0xc00212ac00;}
+node0xc001f5d3b0[label="Musica Digital",color=green,style =filled width = 1.5 group=1];
+node0xc001f5ae80[label="",color=blue,style =filled, width = 0.5 group=21 shape=circle];
+node0xc001f5d3b0->node0xc001f5ae80[dir="both"];
+{rank=same;node0xc001f5d3b0;node0xc001f5ae80;}
+node0xc001ec0000[label="Smart Home",color=green,style =filled width = 1.5 group=1];
+node0xc001ebc680[label="",color=blue,style =filled, width = 0.5 group=3 shape=circle];
+node0xc001ec0000->node0xc001ebc680[dir="both"];
+{rank=same;node0xc001ec0000;node0xc001ebc680;}
+node0xc001fb5980[label="",color=blue,style =filled, width = 0.5 group=23 shape=circle];
+node0xc001ebc680->node0xc001fb5980[dir="both"];
+{rank=same;node0xc001fb5980;node0xc001ebc680;}
+node0xc002222230->node0xc002219400[dir="both"];
+node0xc001ec0050->node0xc001ebc680[dir="both"];
+node0xc002272690->node0xc002270700[dir="both"];
+node0xc002285c70->node0xc002287700[dir="both"];
+node0xc0020d5630->node0xc0020d9000[dir="both"];
+node0xc0020d9000->node0xc0022f1400[dir="both"];
+node0xc0022e4140->node0xc0022dcc00[dir="both"];
+node0xc0021255e0->node0xc00212ac00[dir="both"];
+node0xc001f5d400->node0xc001f5ae80[dir="both"];
+node0xc001fc27d0->node0xc002064880[dir="both"];
+node0xc002064880->node0xc001fb5980[dir="both"];
+node0xc0020bf860->node0xc0020bd800[dir="both"];
+nodeMt->node0xc002063680[dir="both"];
+node0xc002063680->node0xc0022221e0[dir="both"];
+node0xc0022221e0->node0xc0020bf810[dir="both"];
+node0xc0020bf810->node0xc001f5d3b0[dir="both"];
+node0xc001f5d3b0->node0xc001ec0000[dir="both"];
+}

@@ -378,3 +378,63 @@ func Graf_Vector() {
 	}
 
 }
+
+
+func Graficar_Api(conteo int, centros int) string {
+
+	var cadena strings.Builder
+	if centros < len(Vector) && Vector[centros].Puntos != 0 {
+		graficar(centros, &cadena, centros, 0)
+		
+		var name = strconv.Itoa(conteo) + ""
+		guardarArchivo(cadena.String(), name)
+		path, _ := exec.LookPath("dot")
+		cmd, _ := exec.Command(path, "-Tpng", "./"+name+"/"+name+".dot").Output()
+		mode := int(0777)
+		ioutil.WriteFile(name+"/"+name+".png", cmd, os.FileMode(mode))
+		Graficar(conteo+1, centros+5)
+	}
+
+	return cadena.String()
+
+}
+
+func graficar_api(count int, s *strings.Builder, actual int, repetidor int) {
+	if Vector[count].Puntos != 0 && repetidor < 5 {
+		fmt.Fprintf(s, "node%p[label=\"%v|%v|%v\",color=blue,style =filled];\n", &Vector[count], Vector[count].Puntos, Vector[count].Departamento, Vector[count].Indice)
+		if Vector[actual].Puntos != 0 {
+			if &Vector[actual] != &Vector[count] {
+
+				fmt.Fprintf(s, "{rank=same;node%p;node%p}\n", &Vector[count], &Vector[actual])
+			}
+
+			//Print Listas
+			if Vector[count].Listatienda != nil {
+
+				var validar *Node_Tienda
+				validar = Vector[count].Listatienda.frist
+				fmt.Fprintf(s, "node%p[label=\"%v|%v\",color=green,style =filled];\n", validar, validar.Nombre, validar.Calificacion)
+				fmt.Fprintf(s, "node%p->node%p;\n", &Vector[count], validar)
+				fmt.Fprintf(s, "node%p->node%p;\n", validar, &Vector[count])
+
+				var validar1 *Node_Tienda
+				validar1 = validar
+				validar = validar.Next
+				if validar != nil {
+
+					for validar != nil {
+						fmt.Fprintf(s, "node%p[label=\"%v|%v\",color=green,style =filled];\n", validar, validar.Nombre, validar.Calificacion)
+						fmt.Fprintf(s, "node%p->node%p;\n", validar1, validar)
+						fmt.Fprintf(s, "node%p->node%p;\n", validar, validar1)
+
+						validar1 = validar
+						validar = validar.Next
+					}
+				}
+
+				//graficar(anterior.siguiente, s, anterior)
+			}
+		}
+		graficar(count+1, s, count, repetidor+1)
+	}
+}

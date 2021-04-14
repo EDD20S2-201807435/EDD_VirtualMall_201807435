@@ -1,0 +1,76 @@
+digraph G{
+node[shape="record"];
+node0xc0001c4900[label="<f0>|<f1>273  Elegante Soft Ensalada: 62|<f2>",color=green,style =filled];
+node0xc0001c4840[label="<f0>|<f1>265 Elegante Fresco Toallas: 258|<f2>",color=green,style =filled];
+node0xc0001c4900:f0->node0xc0001c4840:f1
+node0xc0001c4b40[label="<f0>|<f1>258 Increíble Metal Jabón: 168|<f2>",color=green,style =filled];
+node0xc0001c4840:f0->node0xc0001c4b40:f1
+node0xc0001c47e0[label="<f0>|<f1>254 Increíble Soft Camisa: 489|<f2>",color=green,style =filled];
+node0xc0001c4b40:f0->node0xc0001c47e0:f1
+node0xc0001c48a0[label="<f0>|<f1>253 Increíble Frozen Jabón: 88|<f2>",color=green,style =filled];
+node0xc0001c47e0:f0->node0xc0001c48a0:f1
+node0xc0001c4d20[label="<f0>|<f1>252 Refinado Soft Pescado: 347|<f2>",color=green,style =filled];
+node0xc0001c48a0:f0->node0xc0001c4d20:f1
+node0xc0001c5320[label="<f0>|<f1>256 Sabrosa Hormigón Pantalones: 278|<f2>",color=green,style =filled];
+node0xc0001c47e0:f2->node0xc0001c5320:f1
+node0xc0001c4c00[label="<f0>|<f1>255 Sabrosa Metal Pelota: 58|<f2>",color=green,style =filled];
+node0xc0001c5320:f0->node0xc0001c4c00:f1
+node0xc0001c4e40[label="<f0>|<f1>257 Práctica Granito Teclado: 429|<f2>",color=green,style =filled];
+node0xc0001c5320:f2->node0xc0001c4e40:f1
+node0xc0001c5140[label="<f0>|<f1>262 Pequeño Caucho Pantalones: 327|<f2>",color=green,style =filled];
+node0xc0001c4b40:f2->node0xc0001c5140:f1
+node0xc0001c4ba0[label="<f0>|<f1>260 Fantástico Metal Mesa: 470|<f2>",color=green,style =filled];
+node0xc0001c5140:f0->node0xc0001c4ba0:f1
+node0xc0001c5200[label="<f0>|<f1>259 Artesanal Acero Ratón: 451|<f2>",color=green,style =filled];
+node0xc0001c4ba0:f0->node0xc0001c5200:f1
+node0xc0001c51a0[label="<f0>|<f1>261 Rústico Granito Tuna: 395|<f2>",color=green,style =filled];
+node0xc0001c4ba0:f2->node0xc0001c51a0:f1
+node0xc0001c5080[label="<f0>|<f1>263 Fantástico Acero Camisa: 463|<f2>",color=green,style =filled];
+node0xc0001c5140:f2->node0xc0001c5080:f1
+node0xc0001c54a0[label="<f0>|<f1>264 Refinado Caucho Tuna: 53|<f2>",color=green,style =filled];
+node0xc0001c5080:f2->node0xc0001c54a0:f1
+node0xc0001c4d80[label="<f0>|<f1>270 Hecho a mano Fresco Pantalones: 111|<f2>",color=green,style =filled];
+node0xc0001c4840:f2->node0xc0001c4d80:f1
+node0xc0001c4a20[label="<f0>|<f1>268 Sabrosa Plástico Presidente: 450|<f2>",color=green,style =filled];
+node0xc0001c4d80:f0->node0xc0001c4a20:f1
+node0xc0001c4cc0[label="<f0>|<f1>266 Pequeño Caucho Camisa: 243|<f2>",color=green,style =filled];
+node0xc0001c4a20:f0->node0xc0001c4cc0:f1
+node0xc0001c5440[label="<f0>|<f1>267 Increíble Soft Computadora: 86|<f2>",color=green,style =filled];
+node0xc0001c4cc0:f2->node0xc0001c5440:f1
+node0xc0001c5380[label="<f0>|<f1>269 Artesanal Metal Pantalones: 3|<f2>",color=green,style =filled];
+node0xc0001c4a20:f2->node0xc0001c5380:f1
+node0xc0001c4ea0[label="<f0>|<f1>271 Sabrosa Plástico Camisa: 66|<f2>",color=green,style =filled];
+node0xc0001c4d80:f2->node0xc0001c4ea0:f1
+node0xc0001c52c0[label="<f0>|<f1>272 Sin marca Cotton Sombrero: 275|<f2>",color=green,style =filled];
+node0xc0001c4ea0:f2->node0xc0001c52c0:f1
+node0xc0001c4780[label="<f0>|<f1>279 Increíble Acero Auto: 35|<f2>",color=green,style =filled];
+node0xc0001c4900:f2->node0xc0001c4780:f1
+node0xc0001c4f00[label="<f0>|<f1>276 Inteligente Hormigón Toallas: 342|<f2>",color=green,style =filled];
+node0xc0001c4780:f0->node0xc0001c4f00:f1
+node0xc0001c49c0[label="<f0>|<f1>275 Rústico Granito Zapatos: 287|<f2>",color=green,style =filled];
+node0xc0001c4f00:f0->node0xc0001c49c0:f1
+node0xc0001c4f60[label="<f0>|<f1>274 Artesanal Hormigón Pizza: 179|<f2>",color=green,style =filled];
+node0xc0001c49c0:f0->node0xc0001c4f60:f1
+node0xc0001c4de0[label="<f0>|<f1>278 Pequeño Plástico Camisa: 51|<f2>",color=green,style =filled];
+node0xc0001c4f00:f2->node0xc0001c4de0:f1
+node0xc0001c53e0[label="<f0>|<f1>277 Sabrosa Metal Ratón: 377|<f2>",color=green,style =filled];
+node0xc0001c4de0:f0->node0xc0001c53e0:f1
+node0xc0001c4a80[label="<f0>|<f1>284 Refinado Cotton Zapatos: 222|<f2>",color=green,style =filled];
+node0xc0001c4780:f2->node0xc0001c4a80:f1
+node0xc0001c5260[label="<f0>|<f1>282 Inteligente Caucho Bike: 407|<f2>",color=green,style =filled];
+node0xc0001c4a80:f0->node0xc0001c5260:f1
+node0xc0001c5020[label="<f0>|<f1>280 Rústico Fresco Zapatos: 20|<f2>",color=green,style =filled];
+node0xc0001c5260:f0->node0xc0001c5020:f1
+node0xc0001c5500[label="<f0>|<f1>281 Sabrosa Frozen Embutidos: 233|<f2>",color=green,style =filled];
+node0xc0001c5020:f2->node0xc0001c5500:f1
+node0xc0001c4960[label="<f0>|<f1>283 Artesanal Metal Presidente: 492|<f2>",color=green,style =filled];
+node0xc0001c5260:f2->node0xc0001c4960:f1
+node0xc0001c4fc0[label="<f0>|<f1>286 Fantástico Soft Presidente: 85|<f2>",color=green,style =filled];
+node0xc0001c4a80:f2->node0xc0001c4fc0:f1
+node0xc0001c4ae0[label="<f0>|<f1>285 Rústico Acero Jabón: 421|<f2>",color=green,style =filled];
+node0xc0001c4fc0:f0->node0xc0001c4ae0:f1
+node0xc0001c4c60[label="<f0>|<f1>288 Sabrosa Frozen Jabón: 342|<f2>",color=green,style =filled];
+node0xc0001c4fc0:f2->node0xc0001c4c60:f1
+node0xc0001c50e0[label="<f0>|<f1>287 Artesanal Granito Zapatos: 398|<f2>",color=green,style =filled];
+node0xc0001c4c60:f0->node0xc0001c50e0:f1
+}

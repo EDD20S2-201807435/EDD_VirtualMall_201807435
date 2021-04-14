@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-
+	
 	"./Listas"
 	"github.com/gorilla/mux"
 )
@@ -203,9 +203,17 @@ func Tienda_Especifica(w http.ResponseWriter, r *http.Request) {
 
 	}
 }
+func handler(w http.ResponseWriter, req *http.Request) {
+    // ...
+	enableCors(&w)
+    // ...	
+}
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
 func main() {
-
+	
 	router := mux.NewRouter()
 	router.HandleFunc("/", start).Methods("GET")
 	router.HandleFunc("/cargartiendas", Add).Methods("POST")
