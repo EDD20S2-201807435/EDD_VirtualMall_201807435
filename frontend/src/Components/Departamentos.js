@@ -14,7 +14,7 @@ function Departamentos(props) {
             if(json.Vector[i].Indice == id){
                 if(json.Vector[i].Departamento != ind){
                 cards = cards+ '<div class="card" style="width: 200px;height: 100px;">'+
-                '<h4 class="title">'+'<a href=http://localhost:4000/Tiendas/'+json.Vector[i].Indice+'/'+json.Vector[i].Departamento+'>'+json.Vector[i].Departamento+'</a></h4>'+
+                '<h4 class="title">'+'<a href=http://localhost:4000/Calificaciones/'+json.Vector[i].Indice+'/'+json.Vector[i].Departamento+'>'+json.Vector[i].Departamento+'</a></h4>'+
                 '</div>';
                 ind = json.Vector[i].Departamento;
                 }

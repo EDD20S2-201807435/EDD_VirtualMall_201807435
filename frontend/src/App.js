@@ -7,6 +7,8 @@ import CreateUser from './Components/CreateUser'
 import ImportList from './Components/ImportList'
 import Departamentos from './Components/Departamentos'
 import Tiendas from './Components/Tiendas'
+import Calificaciones from './Components/Calificaciones'
+import Tienda from './Components/Tienda'
 
 
 function App() {
@@ -18,7 +20,9 @@ function App() {
           <Route path="/formulario" component={CreateUser} />
           <Route path="/listado2" component={ImportList} />
           <Route path="/depa/:id" component={Departamentos} />
-          <Route path="/Tiendas/:id1/:id2" component={Tiendas} />
+          <Route path="/Tiendas/:id1/:id2/:id3" component={Tiendas} />
+          <Route path="/Tienda/:id1/:id2/:id3" component={Tienda} />
+          <Route path="/Calificaciones/:id1/:id2" component={Calificaciones} />
         </Router>
   )
 }

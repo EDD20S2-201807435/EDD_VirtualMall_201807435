@@ -173,6 +173,41 @@ func number(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusFound)
 	json.NewEncoder(w).Encode(a)
 }
+type Dato_Tienda struct {
+	Datos [100]Tien
+}
+type Tien struct {
+	Nombre       string
+	Descripcion  string
+	Contacto     string
+	Departamento string
+	Letra        string
+	Calificacion int
+	Logo         string
+}
+func Tienda_Espe(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	w.Header().Set("Content-Type","application/json")
+	vars := mux.Vars(r)
+	b, _ := vars["id1"]
+	c, _ := vars["id2"]
+	d, _ := strconv.Atoi (vars["id3"])
+	
+	Vectoree := Listas.Listado_tiendas(b,c,d)
+	var envio_Tiendas [100]Tien
+	for i := 0; i<100;i++{
+			if Vectoree[i].Nombre != "" {
+				nodeo := Tien{Vectoree[i].Nombre,Vectoree[i].Descripcion,Vectoree[i].Contacto,Vectoree[i].Departamento,Vectoree[i].Letra,Vectoree[i].Calificacion,Vectoree[i].Logo}
+				envio_Tiendas[i] = nodeo
+			}
+		
+		
+	}
+	dat := Dato_Tienda{envio_Tiendas}
+	json.NewEncoder(w).Encode(dat)
+	
+}
 func Tienda_Especifica(w http.ResponseWriter, r *http.Request) {
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -219,7 +254,7 @@ func main() {
 	router.HandleFunc("/cargartiendas", Add).Methods("POST")
 	router.HandleFunc("/getArreglo", Get_Arreglo).Methods("GET")
 	router.HandleFunc("/TiendaEspecifica", Tienda_Especifica).Methods("POST")
-	router.HandleFunc("/numero/{id}", number).Methods("GET")
+	router.HandleFunc("/listadotiendas/{id1}/{id2}/{id3}", Tienda_Espe).Methods("GET")
     router.HandleFunc("/a",Add_Producto).Methods("POST")
 	router.HandleFunc("/gete", Add_Pedido).Methods("POST")
 	router.HandleFunc("/nem", Ingresar).Methods("GET")
