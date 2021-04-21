@@ -1,0 +1,36 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "1997-06", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc00040c960[label="9",color=green,style =filled,width = 1.5 group=9];
+nodeMt->node0xc00040c960[dir="both"];
+{rank=same;nodeMt;node0xc00040c960;}
+node0xc00040c730[label="16",color=green,style =filled,width = 1.5 group=16];
+node0xc00040c960->node0xc00040c730[dir="both"];
+{rank=same;node0xc00040c960;node0xc00040c730;}
+node0xc00040cbe0[label="17",color=green,style =filled,width = 1.5 group=17];
+node0xc00040c730->node0xc00040cbe0[dir="both"];
+{rank=same;node0xc00040c730;node0xc00040cbe0;}
+node0xc00040c7d0[label="28",color=green,style =filled,width = 1.5 group=28];
+node0xc00040cbe0->node0xc00040c7d0[dir="both"];
+{rank=same;node0xc00040cbe0;node0xc00040c7d0;}
+node0xc00040c6e0[label="Cocina",color=green,style =filled width = 1.5 group=1];
+node0xc0001c0a00[label="",color=blue,style =filled, width = 0.5 group=9 shape=circle];
+node0xc00040c6e0->node0xc0001c0a00[dir="both"];
+{rank=same;node0xc00040c6e0;node0xc0001c0a00;}
+node0xc0001c0880[label="",color=blue,style =filled, width = 0.5 group=16 shape=circle];
+node0xc0001c0a00->node0xc0001c0880[dir="both"];
+{rank=same;node0xc0001c0880;node0xc0001c0a00;}
+node0xc0001c0b80[label="",color=blue,style =filled, width = 0.5 group=17 shape=circle];
+node0xc0001c0880->node0xc0001c0b80[dir="both"];
+{rank=same;node0xc0001c0b80;node0xc0001c0880;}
+node0xc0001c0900[label="",color=blue,style =filled, width = 0.5 group=28 shape=circle];
+node0xc0001c0b80->node0xc0001c0900[dir="both"];
+{rank=same;node0xc0001c0900;node0xc0001c0b80;}
+node0xc00040c960->node0xc0001c0a00[dir="both"];
+node0xc00040c730->node0xc0001c0880[dir="both"];
+node0xc00040cbe0->node0xc0001c0b80[dir="both"];
+node0xc00040c7d0->node0xc0001c0900[dir="both"];
+nodeMt->node0xc00040c6e0[dir="both"];
+}

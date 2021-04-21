@@ -1,0 +1,18 @@
+digraph G{
+node[shape="record"];
+node0xc00039c070[label="<f0>|<f1>815  Elegante Hormigón Embutidos: 129|<f2>",color=green,style =filled];
+node0xc00039c000[label="<f0>|<f1>814 Pequeño Plástico Auto: 364|<f2>",color=green,style =filled];
+node0xc00039c070:f0->node0xc00039c000:f1
+node0xc00039c150[label="<f0>|<f1>813 Fantástico Plástico Pantalones: 454|<f2>",color=green,style =filled];
+node0xc00039c000:f0->node0xc00039c150:f1
+node0xc00039c1c0[label="<f0>|<f1>819 Práctica Soft Auto: 188|<f2>",color=green,style =filled];
+node0xc00039c070:f2->node0xc00039c1c0:f1
+node0xc00039c0e0[label="<f0>|<f1>817 Fantástico Granito Auto: 419|<f2>",color=green,style =filled];
+node0xc00039c1c0:f0->node0xc00039c0e0:f1
+node0xc00039c2a0[label="<f0>|<f1>816 Elegante Acero Toallas: 434|<f2>",color=green,style =filled];
+node0xc00039c0e0:f0->node0xc00039c2a0:f1
+node0xc00039c310[label="<f0>|<f1>818 Genérica Acero Ensalada: 475|<f2>",color=green,style =filled];
+node0xc00039c0e0:f2->node0xc00039c310:f1
+node0xc00039c230[label="<f0>|<f1>820 Refinado Metal Mesa: 373|<f2>",color=green,style =filled];
+node0xc00039c1c0:f2->node0xc00039c230:f1
+}

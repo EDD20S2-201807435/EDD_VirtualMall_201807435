@@ -1,0 +1,10 @@
+digraph G{
+node[shape="record"];
+node0xc0001433b0[label="<f0>|<f1>989  Increíble Caucho Toallas: 287|<f2>",color=green,style =filled];
+node0xc000143420[label="<f0>|<f1>988 Sin marca Metal Tuna: 306|<f2>",color=green,style =filled];
+node0xc0001433b0:f0->node0xc000143420:f1
+node0xc000143490[label="<f0>|<f1>990 Genérica Soft Guantes: 437|<f2>",color=green,style =filled];
+node0xc0001433b0:f2->node0xc000143490:f1
+node0xc000143500[label="<f0>|<f1>991 Sabrosa Caucho Mesa: 474|<f2>",color=green,style =filled];
+node0xc000143490:f2->node0xc000143500:f1
+}

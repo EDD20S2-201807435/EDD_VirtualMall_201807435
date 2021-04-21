@@ -43,6 +43,17 @@ type Productos struct {
 	Precio      float64 `json:"Precio"`
 	Cantidad    int     `json:"Cantidad"`
 	Imagen      string  `json:"Imagen"`
+	Almacenamiento string  `json:"Almacenamiento"`
+}
+type Usuarios struct {
+	Dpi      int64  `json:"Dpi"`
+	Nombre     string    `json:"Nombre"`
+	Correo string  `json:"Correo"`
+	Password      string `json:"Password"`
+	Cuenta    string     `json:"Cuenta"`
+}
+type Usu struct {
+	Usuarios []*Usuarios `json:"Usuarios"`
 }
 type Inventario struct{
 	Tienda string `json:"Tienda"`
@@ -92,7 +103,7 @@ func Add_Producto(w http.ResponseWriter, r *http.Request){
 					if prod.Inventario[i].Productos[j].Nombre != "" {
 						comprabacion := tiendass.Productos.Buscar_Producto(prod.Inventario[i].Productos[j].Codigo,prod.Inventario[i].Productos[j].Cantidad)
 						if comprabacion == nil {
-							tiendass.Productos.Insertar(prod.Inventario[i].Productos[j].Nombre,prod.Inventario[i].Productos[j].Codigo,prod.Inventario[i].Productos[j].Descripcion,prod.Inventario[i].Productos[j].Precio,prod.Inventario[i].Productos[j].Cantidad,prod.Inventario[i].Productos[j].Imagen)
+							tiendass.Productos.Insertar(prod.Inventario[i].Productos[j].Nombre,prod.Inventario[i].Productos[j].Codigo,prod.Inventario[i].Productos[j].Descripcion,prod.Inventario[i].Productos[j].Precio,prod.Inventario[i].Productos[j].Cantidad,prod.Inventario[i].Productos[j].Imagen,prod.Inventario[i].Productos[j].Almacenamiento)
 						}
 						
 					}
@@ -116,7 +127,6 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	if er != nil {
 		fmt.Fprintf(w, "Error al Insertar el segundo")
 	}
-	fmt.Println(dat.Datos[1].Indice)
 	list_File := Listas.NewList_Datos()
 	for i := 0; i < 100; i++ {
 		//Si Hay un Nuevo Inidice
@@ -185,6 +195,18 @@ type Tien struct {
 	Calificacion int
 	Logo         string
 }
+
+type Dato_Producto struct {
+	Datos [100]Produ
+}
+type Produ struct {
+	Nombre      string
+	Codigo      int
+	Descripcion string
+	Precio      float64
+	Cantidad    int
+	Imagen      string
+}
 func Tienda_Espe(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -208,6 +230,7 @@ func Tienda_Espe(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(dat)
 	
 }
+
 func Tienda_Especifica(w http.ResponseWriter, r *http.Request) {
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -249,6 +272,7 @@ func enableCors(w *http.ResponseWriter) {
 }
 func main() {
 	
+	
 	router := mux.NewRouter()
 	router.HandleFunc("/", start).Methods("GET")
 	router.HandleFunc("/cargartiendas", Add).Methods("POST")
@@ -259,6 +283,7 @@ func main() {
 	router.HandleFunc("/gete", Add_Pedido).Methods("POST")
 	router.HandleFunc("/nem", Ingresar).Methods("GET")
 	router.HandleFunc("/crear", CrearJson)
+	router.HandleFunc("/newusuario", InsertarCliente).Methods("POST")
 	
 	log.Fatal(http.ListenAndServe(":3000", router))
 

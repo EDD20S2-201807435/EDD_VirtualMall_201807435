@@ -1,0 +1,22 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "1997-02", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc00040ceb0[label="5",color=green,style =filled,width = 1.5 group=5];
+nodeMt->node0xc00040ceb0[dir="both"];
+{rank=same;nodeMt;node0xc00040ceb0;}
+node0xc00040c370[label="22",color=green,style =filled,width = 1.5 group=22];
+node0xc00040ceb0->node0xc00040c370[dir="both"];
+{rank=same;node0xc00040ceb0;node0xc00040c370;}
+node0xc00040c320[label="Reproductores web",color=green,style =filled width = 1.5 group=1];
+node0xc0001c0d80[label="",color=blue,style =filled, width = 0.5 group=5 shape=circle];
+node0xc00040c320->node0xc0001c0d80[dir="both"];
+{rank=same;node0xc00040c320;node0xc0001c0d80;}
+node0xc0001c0680[label="",color=blue,style =filled, width = 0.5 group=22 shape=circle];
+node0xc0001c0d80->node0xc0001c0680[dir="both"];
+{rank=same;node0xc0001c0680;node0xc0001c0d80;}
+node0xc00040ceb0->node0xc0001c0d80[dir="both"];
+node0xc00040c370->node0xc0001c0680[dir="both"];
+nodeMt->node0xc00040c320[dir="both"];
+}

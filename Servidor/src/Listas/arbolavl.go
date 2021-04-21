@@ -15,9 +15,11 @@ type Nodo struct {
 	Precio      float64
 	Cantidad    int
 	Imagen      string
+	Almacenammiento string
 	Factor      int
 	Izquierda   *Nodo
 	Derecha     *Nodo
+	
 }
 
 type Arbol struct {
@@ -28,8 +30,8 @@ func NewArbol() *Arbol {
 	return &Arbol{nil}
 }
 
-func NewNodo(Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string) *Nodo {
-	return &Nodo{Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, 0, nil, nil}
+func NewNodo(Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string,Almacenammiento string) *Nodo {
+	return &Nodo{Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen,Almacenammiento, 0, nil, nil}
 }
 
 func rotacionII(n *Nodo, n1 *Nodo) *Nodo {
@@ -98,13 +100,13 @@ func rotacionID(n *Nodo, n1 *Nodo) *Nodo {
 	return n2
 }
 
-func insertar(raiz *Nodo, Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string, hc *bool) *Nodo {
+func insertar(raiz *Nodo, Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string,Almacenammiento string, hc *bool) *Nodo {
 	var n1 *Nodo
 	if raiz == nil {
-		raiz = NewNodo(Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen)
+		raiz = NewNodo(Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen,Almacenammiento)
 		*hc = true
 	} else if Codigo < raiz.Codigo {
-		izq := insertar(raiz.Izquierda, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, hc)
+		izq := insertar(raiz.Izquierda, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen,Almacenammiento, hc)
 		raiz.Izquierda = izq
 		if *hc {
 			switch raiz.Factor {
@@ -126,7 +128,7 @@ func insertar(raiz *Nodo, Nombre string, Codigo int, Descripcion string, Precio 
 			}
 		}
 	} else if Codigo > raiz.Codigo {
-		der := insertar(raiz.Derecha, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, hc)
+		der := insertar(raiz.Derecha, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen,Almacenammiento, hc)
 		raiz.Derecha = der
 		if *hc {
 			switch raiz.Factor {
@@ -152,10 +154,10 @@ func insertar(raiz *Nodo, Nombre string, Codigo int, Descripcion string, Precio 
 	return raiz
 }
 
-func (this *Arbol) Insertar(Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string) {
+func (this *Arbol) Insertar(Nombre string, Codigo int, Descripcion string, Precio float64, Cantidad int, Imagen string,Almacenammiento string) {
 	b := false
 	a := &b
-	this.raiz = insertar(this.raiz, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen, a)
+	this.raiz = insertar(this.raiz, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen,Almacenammiento, a)
 }
 
 func (this *Arbol) Generar(name string) {
@@ -188,6 +190,20 @@ func (this *Arbol) generar(cadena *strings.Builder, padre *Nodo, actual *Nodo, I
 		this.generar(cadena, actual, actual.Derecha, false)
 	}
 }
+
+
+
+func (this *Arbol) MostrarArbol(){
+	
+	
+	
+}
+
+func (this *Arbol) mostrarArbol( padre *Nodo, actual *Nodo, Izquierda bool) {
+	
+}
+
+
 
 func (this *Arbol) Buscar_Producto(codigo int,cantidad int)*Nodo {
 	var cadena strings.Builder

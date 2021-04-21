@@ -1,0 +1,31 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "1997-12", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc00040d040[label="17",color=green,style =filled,width = 1.5 group=17];
+nodeMt->node0xc00040d040[dir="both"];
+{rank=same;nodeMt;node0xc00040d040;}
+node0xc00040ce10[label="25",color=green,style =filled,width = 1.5 group=25];
+node0xc00040d040->node0xc00040ce10[dir="both"];
+{rank=same;node0xc00040d040;node0xc00040ce10;}
+node0xc00040c550[label="27",color=green,style =filled,width = 1.5 group=27];
+node0xc00040ce10->node0xc00040c550[dir="both"];
+{rank=same;node0xc00040ce10;node0xc00040c550;}
+node0xc00040cff0[label="Cocina",color=green,style =filled width = 1.5 group=1];
+node0xc0001c0e80[label="",color=blue,style =filled, width = 0.5 group=17 shape=circle];
+node0xc00040cff0->node0xc0001c0e80[dir="both"];
+{rank=same;node0xc00040cff0;node0xc0001c0e80;}
+node0xc00040c500[label="Reproductores web",color=green,style =filled width = 1.5 group=1];
+node0xc0001c0d00[label="",color=blue,style =filled, width = 0.5 group=25 shape=circle];
+node0xc00040c500->node0xc0001c0d00[dir="both"];
+{rank=same;node0xc00040c500;node0xc0001c0d00;}
+node0xc0001c0780[label="",color=blue,style =filled, width = 0.5 group=27 shape=circle];
+node0xc0001c0d00->node0xc0001c0780[dir="both"];
+{rank=same;node0xc0001c0780;node0xc0001c0d00;}
+node0xc00040d040->node0xc0001c0e80[dir="both"];
+node0xc00040ce10->node0xc0001c0d00[dir="both"];
+node0xc00040c550->node0xc0001c0780[dir="both"];
+nodeMt->node0xc00040cff0[dir="both"];
+node0xc00040cff0->node0xc00040c500[dir="both"];
+}

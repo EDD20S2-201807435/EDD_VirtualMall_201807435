@@ -1,0 +1,15 @@
+digraph G{
+node[shape="box"];
+nodeMt[ label = "1997-11", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+e0[ shape = point, width = 0 ];
+e1[ shape = point, width = 0 ];
+node0xc00040ccd0[label="5",color=green,style =filled,width = 1.5 group=5];
+nodeMt->node0xc00040ccd0[dir="both"];
+{rank=same;nodeMt;node0xc00040ccd0;}
+node0xc00040cc80[label="Cocina",color=green,style =filled width = 1.5 group=1];
+node0xc0001c0c00[label="",color=blue,style =filled, width = 0.5 group=5 shape=circle];
+node0xc00040cc80->node0xc0001c0c00[dir="both"];
+{rank=same;node0xc00040cc80;node0xc0001c0c00;}
+node0xc00040ccd0->node0xc0001c0c00[dir="both"];
+nodeMt->node0xc00040cc80[dir="both"];
+}
