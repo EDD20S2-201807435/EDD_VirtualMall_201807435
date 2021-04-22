@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu } from "semantic-ui-react";
 
 const colores = ['blue', 'orange', 'red']
-const opciones = ['Crear Usuario', 'Lista de productos', 'Ver usuarios']
+const opciones = ['Crear Usuarios', 'Ver Pedido', 'Lista de productos']
 const url = ['/formulario', "/listado2", "/listado", "/"]
 
 function NavBar() {

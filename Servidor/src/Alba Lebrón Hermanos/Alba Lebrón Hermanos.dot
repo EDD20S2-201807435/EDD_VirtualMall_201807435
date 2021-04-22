@@ -1,14 +1,14 @@
 digraph G{
 node[shape="record"];
-node0xc00039c620[label="<f0>|<f1>210  Pequeño Madera Mesa: 78|<f2>",color=green,style =filled];
-node0xc00039c5b0[label="<f0>|<f1>208 Práctica Metal Ensalada: 481|<f2>",color=green,style =filled];
-node0xc00039c620:f0->node0xc00039c5b0:f1
-node0xc00039c700[label="<f0>|<f1>209 Ergonómico Acero Zapatos: 432|<f2>",color=green,style =filled];
-node0xc00039c5b0:f2->node0xc00039c700:f1
-node0xc00039c540[label="<f0>|<f1>212 Ergonómico Madera Pescado: 24|<f2>",color=green,style =filled];
-node0xc00039c620:f2->node0xc00039c540:f1
-node0xc00039c690[label="<f0>|<f1>211 Refinado Acero Pantalones: 2|<f2>",color=green,style =filled];
-node0xc00039c540:f0->node0xc00039c690:f1
-node0xc00039c4d0[label="<f0>|<f1>213 Rústico Plástico Tuna: 53|<f2>",color=green,style =filled];
-node0xc00039c540:f2->node0xc00039c4d0:f1
+node0xc0003823f0[label="<f0>|<f1>210  Pequeño Madera Mesa: 78|<f2>",color=green,style =filled];
+node0xc000382380[label="<f0>|<f1>208 Práctica Metal Ensalada: 481|<f2>",color=green,style =filled];
+node0xc0003823f0:f0->node0xc000382380:f1
+node0xc0003824d0[label="<f0>|<f1>209 Ergonómico Acero Zapatos: 432|<f2>",color=green,style =filled];
+node0xc000382380:f2->node0xc0003824d0:f1
+node0xc000382310[label="<f0>|<f1>212 Ergonómico Madera Pescado: 24|<f2>",color=green,style =filled];
+node0xc0003823f0:f2->node0xc000382310:f1
+node0xc000382460[label="<f0>|<f1>211 Refinado Acero Pantalones: 2|<f2>",color=green,style =filled];
+node0xc000382310:f0->node0xc000382460:f1
+node0xc0003822a0[label="<f0>|<f1>213 Rústico Plástico Tuna: 53|<f2>",color=green,style =filled];
+node0xc000382310:f2->node0xc0003822a0:f1
 }

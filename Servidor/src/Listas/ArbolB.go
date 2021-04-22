@@ -201,7 +201,7 @@ func(this *ArbolB)GraficarB(){
 	graficarB(this.Raiz,&builder,m,nil,0)
 	fmt.Fprintf(&builder,"}")
 	guardarArchivoB(builder.String())
-	generarimagen("arbol.pdf")
+	generarimagen("arbol.png")
 }
 func graficarB(actual *NodoB,cad *strings.Builder,arr map[string]*NodoB,padre *NodoB,pos int){
 	if actual == nil {
@@ -289,7 +289,7 @@ func guardarArchivoB(cadena string){
 }
 func generarimagen(nombre string){
 	path, _ := exec.LookPath("dot")
-	cmd, _ :=exec.Command(path, "-Tpdf","./diagrama.dot").Output()
+	cmd, _ :=exec.Command(path, "-Tpng","./diagrama.dot").Output()
 	mode := int(0777)
 	ioutil.WriteFile(nombre,cmd,os.FileMode(mode))
 }

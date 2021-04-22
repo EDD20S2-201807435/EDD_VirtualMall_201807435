@@ -22,6 +22,17 @@ type Message struct {
 	Name string `json:"Name"`
 	Age  int    `json:"Age"`
 }
+type Enlaces struct{
+	Nombre string `json:"Nombre"`
+	Distancia int `json:"Distancia"`
+}
+type Nodos struct{
+	Nombre string `json:"Nombre"`
+	Enlaces []*Enlaces `json:"Enlaces"`
+}
+type Grafo struct {
+	Nodos []*Nodos `json:"Nodos"`
+}
 
 type TE struct {
 	Departamento string `json:"Departamento"`
@@ -186,6 +197,13 @@ func number(w http.ResponseWriter, r *http.Request) {
 type Dato_Tienda struct {
 	Datos [100]Tien
 }
+type Imagen_arbol struct {
+	url string
+}
+type Dato_imagen struct {
+	url string
+	Datos [1]Imagen_arbol
+}
 type Tien struct {
 	Nombre       string
 	Descripcion  string
@@ -227,10 +245,37 @@ func Tienda_Espe(w http.ResponseWriter, r *http.Request) {
 		
 	}
 	dat := Dato_Tienda{envio_Tiendas}
+	
 	json.NewEncoder(w).Encode(dat)
 	
 }
-
+func Arbol(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	w.Header().Set("Content-Type","application/json")
+	vars := mux.Vars(r)
+	b, _ := vars["id1"]
+	c, _ := vars["id2"]
+	d, _ := strconv.Atoi (vars["id3"])
+	e, _ := vars["id4"]
+	var avl [1]Imagen_arbol
+	Vectoree := Listas.Tienda(b,c,d,e)
+	envio_Tiendas := ""
+	url:=""
+	if Vectoree != nil {
+		
+		if Vectoree.Productos != nil {
+			fmt.Println("Existe Arbol")
+			envio_Tiendas =Vectoree.Productos.Generar(Vectoree.Nombre)
+			dat1 := Imagen_arbol{"C:/Users/milto/EDD_VirtualMall_201807435/Servidor/src/"+envio_Tiendas}
+			url="C:/Users/milto/EDD_VirtualMall_201807435/Servidor/src/"+envio_Tiendas
+			avl[0] = dat1
+		}
+	}
+	ar := Dato_imagen{url,avl}
+	json.NewEncoder(w).Encode(ar)
+	
+}
 func Tienda_Especifica(w http.ResponseWriter, r *http.Request) {
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -282,9 +327,11 @@ func main() {
     router.HandleFunc("/a",Add_Producto).Methods("POST")
 	router.HandleFunc("/gete", Add_Pedido).Methods("POST")
 	router.HandleFunc("/nem", Ingresar).Methods("GET")
+	router.HandleFunc("/Arbol/{id1}/{id2}/{id3}/{id4}", Arbol).Methods("GET")
+	
 	router.HandleFunc("/crear", CrearJson)
 	router.HandleFunc("/newusuario", InsertarCliente).Methods("POST")
-	
+	router.HandleFunc("/grafo", Add_Grafo).Methods("POST")
 	log.Fatal(http.ListenAndServe(":3000", router))
 
 }

@@ -1,5 +1,6 @@
 import {React, useEffect,useState} from 'react'
 import './Css/Tienda.css'
+import NavBar from './NavBar'
 function Tiendas(props) {
     let id1 = props.match.params.id1
     let id2 = props.match.params.id2
@@ -17,7 +18,7 @@ function Tiendas(props) {
                 cards = cards+ '<div class="card" style="width: 300px;height: 400px;">'+
 			'<a href=""><img style="width: 150px;height: 150px; margin-top:10px;" src="'+json.Datos[i].Logo+'" ></a>'+
 			'<h4 class="title1" >'+json.Datos[i].Nombre+'</h4>'+
-			'<p>Descripcion: '+json.Datos[i].Descripcion+'</p>'+
+			'<p class="DescTienda">Descripcion: '+json.Datos[i].Descripcion+'</p>'+
 			'<p>Contacto:  '+json.Datos[i].Contacto+'</p>'+
 			'</div>';
 
@@ -30,8 +31,11 @@ function Tiendas(props) {
           
    });
     return (
+        <>
+        <NavBar/>
         <div class="container" id="container">	
         </div>
+        </>
     )
 }
 

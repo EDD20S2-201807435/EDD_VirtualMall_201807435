@@ -50,6 +50,31 @@ type List struct {
 type List_Tienda struct {
 	frist, last *Node_Tienda
 }
+func Tienda(indice string, depaa string, Puntos int,Nombre string) *Node_Tienda{
+	
+	for i := 0; i < len(Vector); i++ {
+		if Vector[i].Departamento == depaa && Vector[i].Indice == indice && Vector[i].Puntos == Puntos{
+			
+			if Vector[i].Listatienda != nil{
+				
+				listado := Vector[i].Listatienda
+				aux := listado.frist
+				
+				for aux != nil {
+					if aux.Nombre == Nombre{
+						return aux
+					}
+					aux = aux.Next
+				}
+				
+			}else{
+				
+			}
+		}
+	}
+	return nil
+
+}
 func Listado_tiendas(indice string, depaa string, Puntos int) [100]Node_Tienda{
 	var Vector_retorno [100]Node_Tienda
 	for i := 0; i < len(Vector); i++ {

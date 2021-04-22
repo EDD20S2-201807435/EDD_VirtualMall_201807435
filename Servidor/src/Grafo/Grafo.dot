@@ -1,0 +1,32 @@
+digraph G{
+layout = circo;
+node [shape = circle,fontname = Helvetica];
+node0xc000092880[label="Andromeda",color=blue,style =filled];
+node0xc0000928a0[label="La maquina neumatica",color=blue,style =filled];
+node0xc0000928c0[label="El ave del paraiso",color=blue,style =filled];
+node0xc0000928e0[label="Acuario",color=blue,style =filled];
+node0xc000092900[label="El aguila",color=blue,style =filled];
+node0xc000092920[label="La jirafa",color=blue,style =filled];
+node0xc000092940[label="El cangrejo",color=blue,style =filled];
+node0xc000092960[label="El altar",color=blue,style =filled];
+node0xc000092980[label="El carnero",color=blue,style =filled];
+node0xc0000929a0[label="El cincel",color=blue,style =filled];
+node0xc000092880->node0xc000092920 [label="5"];
+node0xc000092880->node0xc0000928a0 [label="10"];
+node0xc000092880->node0xc0000928c0 [label="8"];
+node0xc000092880->node0xc000092940 [label="12"];
+node0xc0000928a0->node0xc000092920 [label="15"];
+node0xc0000928a0->node0xc0000928e0 [label="0"];
+node0xc0000928c0->node0xc000092900 [label="5"];
+node0xc0000928e0->node0xc000092960 [label="7"];
+node0xc000092900->node0xc000092980 [label="9"];
+node0xc000092920->node0xc000092940 [label="6"];
+node0xc000092920->node0xc0000929a0 [label="13"];
+node0xc000092940->node0xc0000928c0 [label="13"];
+node0xc000092940->node0xc0000929a0 [label="10"];
+node0xc000092940->node0xc000092900 [label="15"];
+node0xc000092960->node0xc000092920 [label="14"];
+node0xc000092980->node0xc000092940 [label="3"];
+node0xc0000929a0->node0xc000092960 [label="5"];
+node0xc0000929a0->node0xc000092980 [label="2"];
+}

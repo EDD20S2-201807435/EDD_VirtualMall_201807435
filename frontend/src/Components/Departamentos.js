@@ -1,6 +1,6 @@
 import {React, useEffect,useState} from 'react'
 import './Css/Departamentos.css'
-
+import Navbar from './NavBar'
 function Departamentos(props) {
     let id = props.match.params.id
     const url = "http://localhost:3000/crear";
@@ -26,8 +26,12 @@ function Departamentos(props) {
           
    });
     return (
+        <>
+        <Navbar />
         <div class="container" id="container">	
         </div>
+        </>
+        
     )
 }
 

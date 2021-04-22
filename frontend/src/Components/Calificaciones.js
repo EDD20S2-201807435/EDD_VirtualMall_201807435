@@ -1,5 +1,7 @@
 import {React, useEffect,useState} from 'react'
 import './Css/UserList.css'
+import NavBar from './NavBar'
+import Navbar from './NavBar'
 function Calificaciones(props) {
     let id1 = props.match.params.id1
     let id2 = props.match.params.id2
@@ -26,8 +28,11 @@ function Calificaciones(props) {
           
    });
     return (
+        <>
+        <NavBar/>
         <div class="container" id="container">	
         </div>
+        </>
     )
 }
 

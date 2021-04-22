@@ -2,6 +2,7 @@ import {React, useEffect,useState} from 'react'
 import './Css/UserList.css'
 import { Container } from 'semantic-ui-react';
 import Mosaico from './Mosaico'
+import Navbar from './NavBar'
 const axios =require('axios').default
 var cors = require('cors')
 function UserList() {
@@ -26,8 +27,11 @@ function UserList() {
           
    });
     return (
-        <div class="container" id="container">	
+        <><Navbar/>
+         <div class="container" id="container">	
         </div>
+        </>
+       
     )
 }
 

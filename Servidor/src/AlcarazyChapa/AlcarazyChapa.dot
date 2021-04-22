@@ -1,0 +1,10 @@
+digraph G{
+node[shape="record"];
+node0xc0001520e0[label="<f0>|<f1>913  Pequeño Fresco Mesa: 347|<f2>",color=green,style =filled];
+node0xc000152070[label="<f0>|<f1>912 Increíble Acero Embutidos: 44|<f2>",color=green,style =filled];
+node0xc0001520e0:f0->node0xc000152070:f1
+node0xc000152000[label="<f0>|<f1>915 Hecho a mano Fresco Teclado: 35|<f2>",color=green,style =filled];
+node0xc0001520e0:f2->node0xc000152000:f1
+node0xc000152150[label="<f0>|<f1>914 Fantástico Hormigón Toallas: 48|<f2>",color=green,style =filled];
+node0xc000152000:f0->node0xc000152150:f1
+}

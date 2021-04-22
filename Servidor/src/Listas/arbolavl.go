@@ -160,7 +160,7 @@ func (this *Arbol) Insertar(Nombre string, Codigo int, Descripcion string, Preci
 	this.raiz = insertar(this.raiz, Nombre, Codigo, Descripcion, Precio, Cantidad, Imagen,Almacenammiento, a)
 }
 
-func (this *Arbol) Generar(name string) {
+func (this *Arbol) Generar(name string) string{
 	var cadena strings.Builder
 	fmt.Fprintf(&cadena, "digraph G{\n")
 	fmt.Fprintf(&cadena, "node[shape=\"record\"];\n")
@@ -175,7 +175,7 @@ func (this *Arbol) Generar(name string) {
 		cmd, _ := exec.Command(path, "-Tpng", "./"+name+"/"+name+".dot").Output()
 		mode := int(0777)
 		ioutil.WriteFile(name+"/"+name+".png", cmd, os.FileMode(mode))	
-	
+	return name+"/"+name+".png"
 }
 
 func (this *Arbol) generar(cadena *strings.Builder, padre *Nodo, actual *Nodo, Izquierda bool) {
